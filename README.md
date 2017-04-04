@@ -3,7 +3,7 @@
 
 Idea from: [iOS GPUImage framework](https://github.com/BradLarson/GPUImage) and [Android GPUImage framework](https://github.com/CyberAgent/android-gpuimage)
 
-The GPUImage-x framework is cross-platform (for both Android and iOS) library, which aims to have something similar to GPUImage that let you apply GPU-accelerated filters to images, live camera video. The greatest strength of the libray is that it enables you to maintain your Android and iOS project with one library, as the core code of library is written in C++.
+The GPUImage-x framework is cross-platform (for both Android and iOS) library, which aims to have something similar to GPUImage that let you apply GPU-accelerated filters to images, live camera video. The greatest strength of the libray is that it enables you to **maintain your Android and iOS project with one library, as the core code of library is written in C++.**
 
 ## License
     Copyright (C) 2017 Yijin Wang, Yiqian Wang
