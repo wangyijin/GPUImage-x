@@ -325,6 +325,7 @@
 				DEVELOPMENT_TEAM = 5FK389HUWX;
 				HEADER_SEARCH_PATHS = "../GPUImage-x/**";
 				INFOPLIST_FILE = "GPUImage-x-Sample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Jin.GPUImage-x-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -338,6 +339,7 @@
 				DEVELOPMENT_TEAM = 5FK389HUWX;
 				HEADER_SEARCH_PATHS = "../GPUImage-x/**";
 				INFOPLIST_FILE = "GPUImage-x-Sample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Jin.GPUImage-x-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";

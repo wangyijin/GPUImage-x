@@ -94,27 +94,27 @@ void Context::purge() {
 #if PLATFORM == PLATFORM_IOS
 void Context::runSync(std::function<void(void)> func) {
     useAsCurrent();
-    dispatch_queue_t videoProcessingQueue = Context::getInstance()->getContextQueue();
+    dispatch_queue_t contextQueue = Context::getInstance()->getContextQueue();
 
-    if (dispatch_get_current_queue() == videoProcessingQueue)
+    if (dispatch_get_current_queue() == contextQueue)
     {
         func();
     }else
     {
-        dispatch_sync(videoProcessingQueue, ^{ func(); });
+        dispatch_sync(contextQueue, ^{ func(); });
     }
 }
 
 void Context::runAsync(std::function<void(void)> func) {
     useAsCurrent();
-    dispatch_queue_t videoProcessingQueue = Context::getInstance()->getContextQueue();
+    dispatch_queue_t contextQueue = Context::getInstance()->getContextQueue();
 
-    if (dispatch_get_current_queue() == videoProcessingQueue)
+    if (dispatch_get_current_queue() == contextQueue)
     {
         func();
     }else
     {
-        dispatch_async(videoProcessingQueue, ^{ func(); });
+        dispatch_async(contextQueue, ^{ func(); });
     }
 }
 
