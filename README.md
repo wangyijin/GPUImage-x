@@ -21,9 +21,9 @@ Following frameworks are required to be add to your project.
 - **NSPhotoLibraryUsageDescription** must be filled if your app will access photo library.
 - **NSCameraUsageDescription** must be filled if camera is used.
 
-## Sample Code
+### Sample Code
 
-### Filtering An Image
+#### Filtering An Image
 
     GPUImage::SourceImage* sourceImage;
     GPUImage::Filter* filter;
@@ -36,9 +36,9 @@ Following frameworks are required to be add to your project.
         sourceImage->proceed();
     });
 
-This will filter an image with Gaussian BLur effect. Calls of GPUImage-x functions must be embraced in `GPUImage::Context::getInstance()->runSync([&]{` and `});`, as GPUImage-x code should run in a seperate thread. As you can see, invocation chaining is preferred that will produce concise, elegant, and easy-to-read code. e.g. `sourceImage->addTarget(filter1)->addTarget(filter2)->...->addTarget(filterN)->addTarget(filterView);`
+This will filter an image with Gaussian BLur effect. Calls of GPUImage-x functions must be embraced between `GPUImage::Context::getInstance()->runSync([&]{` and `});`, as GPUImage-x code should run in a seperate thread. As you can see, invocation chaining is preferred that will produce concise, elegant, and easy-to-read code. e.g. `sourceImage->addTarget(filter1)->addTarget(filter2)->...->addTarget(filterN)->addTarget(filterView);`
 
-### Filtering Camera Video
+#### Filtering Camera Video
 
     GPUImage::SourceCamera* camera;
     GPUImage::Filter* filter;
