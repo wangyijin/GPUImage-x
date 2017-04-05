@@ -18,8 +18,8 @@ Following frameworks are required to be add to your project.
 - **CoreMedia.framework**
 
 ### Usage Description in Info.plist
-- **NSPhotoLibraryUsageDescription** is need to be filled if your app will access photo library.
-- **NSCameraUsageDescription** is need to be filled if camera is used.
+- **NSPhotoLibraryUsageDescription** must be filled if your app will access photo library.
+- **NSCameraUsageDescription** must be filled if camera is used.
 
 ## Sample Code
 
