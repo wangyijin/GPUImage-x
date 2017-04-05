@@ -78,3 +78,6 @@ This will filter a camera video in real time with Beautify Effect.
     See the License for the specific language governing permissions and
     limitations under the License.
 
+## Donate
+Alipay:
+![Alipay](https://github.com/wangyijin/raw/blob/master/alipay.jpg?raw=true "alipay")
