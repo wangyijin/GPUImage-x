@@ -14,12 +14,12 @@ The GPUImage-x framework is a **cross-platform (for both Android and iOS) librar
 
 ### Frameworks Dependency
 Following frameworks are required to be add to your project.
-- AVFoundation.framework 
-- CoreMedia.framework
+- **AVFoundation.framework**
+- **CoreMedia.framework**
 
 ### Usage Description in Info.plist
-- NSPhotoLibraryUsageDescription is need to be filled if your app will access photo library.
-- NSCameraUsageDescription is need to be filled if camera is used.
+- **NSPhotoLibraryUsageDescription** is need to be filled if your app will access photo library.
+- **NSCameraUsageDescription** is need to be filled if camera is used.
 
 ## Sample Code
 
@@ -36,7 +36,7 @@ Following frameworks are required to be add to your project.
         sourceImage->proceed();
     });
 
-This will filter an image with Gaussian BLur effect. Calls of GPUImage-x functions must be embraced in "GPUImage::Context::getInstance()->runSync([&]{" and "});", as GPUImage-x code should run in a seperate thread. As you can see, invocation chaining is preferred that will produce concise, elegant, and easy-to-read code. e.g. `<sourceImage->addTarget(filter1)->addTarget(filter2)->...->addTarget(filterN)->addTarget(filterView);>`
+This will filter an image with Gaussian BLur effect. Calls of GPUImage-x functions must be embraced in `GPUImage::Context::getInstance()->runSync([&]{` and `});`, as GPUImage-x code should run in a seperate thread. As you can see, invocation chaining is preferred that will produce concise, elegant, and easy-to-read code. e.g. `sourceImage->addTarget(filter1)->addTarget(filter2)->...->addTarget(filterN)->addTarget(filterView);`
 
 ### Filtering Camera Video
 
@@ -50,7 +50,7 @@ This will filter an image with Gaussian BLur effect. Calls of GPUImage-x functio
         camera->start();
     });
 
-This will filter a camera video in real time.
+This will filter a camera video in real time with Beautify Effect.
 
 ## License
     Copyright (C) 2017 Yijin Wang, Yiqian Wang
