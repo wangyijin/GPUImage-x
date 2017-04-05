@@ -14,12 +14,12 @@ The GPUImage-x framework is a **cross-platform (for both Android and iOS) librar
 
 ### Frameworks Dependency
 Following frameworks are required to be add to your project.
-- **AVFoundation.framework**
-- **CoreMedia.framework**
+- `AVFoundation.framework`
+- `CoreMedia.framework`
 
 ### Usage Description in Info.plist
-- **NSPhotoLibraryUsageDescription** must be filled if your app will access photo library.
-- **NSCameraUsageDescription** must be filled if camera is used.
+- `NSPhotoLibraryUsageDescription` must be filled if your app will access photo library.
+- `NSCameraUsageDescription` must be filled if camera is used.
 
 ### Sample Code
 
@@ -51,6 +51,17 @@ This will filter an image with Gaussian BLur effect. Calls of GPUImage-x functio
     });
 
 This will filter a camera video in real time with Beautify Effect.
+
+## Usage - Android
+
+### Gradle dependency
+
+### Sample Code
+
+#### Filtering An Image
+
+#### Filtering Camera Video
+
 
 ## License
     Copyright (C) 2017 Yijin Wang, Yiqian Wang
