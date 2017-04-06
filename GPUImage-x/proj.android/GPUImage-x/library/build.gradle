@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -22,6 +23,8 @@ android {
     }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+publish {
+    groupId = 'com.jin.gpuimage-x'
+    artifactId = 'gpuimage-x'
+    publishVersion = '1.0.0'
 }
