@@ -27,33 +27,33 @@ Following frameworks are required to be add to your project.
 
 #### Filtering An Image
 
-    ```c++
-    GPUImage::SourceImage* sourceImage;
-    GPUImage::Filter* filter;
-    GPUImageView* filterView = (GPUImageView*)self.view;
-    UIImage* inputImage = [UIImage imageNamed:@"test.jpg"];
-    GPUImage::Context::getInstance()->runSync([&]{
-        sourceImage = GPUImage::SourceImage::create(inputImage);
-        filter = GPUImage::GaussianBlurFilter::create();
-        sourceImage->addTarget(filter)->addTarget(filterView);
-        sourceImage->proceed();
-    });
-    ```
+```c++
+GPUImage::SourceImage* sourceImage;
+GPUImage::Filter* filter;
+GPUImageView* filterView = (GPUImageView*)self.view;
+UIImage* inputImage = [UIImage imageNamed:@"test.jpg"];
+GPUImage::Context::getInstance()->runSync([&]{
+    sourceImage = GPUImage::SourceImage::create(inputImage);
+    filter = GPUImage::GaussianBlurFilter::create();
+    sourceImage->addTarget(filter)->addTarget(filterView);
+    sourceImage->proceed();
+});
+```
 
 This will filter an image with Gaussian Blur effect. GPUImage-x function calls must be embraced between `GPUImage::Context::getInstance()->runSync([&]{` and `});`, as GPUImage-x code should run in a seperate thread. As you can see, invocation chaining is preferred that will produce concise, elegant, and easy-to-read code. e.g. `sourceImage->addTarget(filter1)->addTarget(filter2)->...->addTarget(filterN)->addTarget(filterView);`
 
 #### Filtering Camera Video
 
 ```c++
-    GPUImage::SourceCamera* camera;
-    GPUImage::Filter* filter;
-    GPUImageView* filterView = (GPUImageView*)self.view;
-    GPUImage::Context::getInstance()->runSync([&]{
-        camera = GPUImage::SourceCamera::create();
-        filter = GPUImage::BeautifyFilter::create();
-        camera->addTarget(filter)->addTarget(filterView);
-        camera->start();
-    });
+GPUImage::SourceCamera* camera;
+GPUImage::Filter* filter;
+GPUImageView* filterView = (GPUImageView*)self.view;
+GPUImage::Context::getInstance()->runSync([&]{
+    camera = GPUImage::SourceCamera::create();
+    filter = GPUImage::BeautifyFilter::create();
+    camera->addTarget(filter)->addTarget(filterView);
+    camera->start();
+});
 ```
 
 This will filter a camera video in real time with Beautify Effect.
