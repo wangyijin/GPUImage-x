@@ -72,7 +72,7 @@ This will filter a camera video in real time with Beautify Effect.
 
     Bitmap bmp = BitmapFactory.decodeStream(getAssets().open("test.jpg"));
     GPUImageSourceImage sourceImage = new GPUImageSourceImage(bmp);
-    GPUImageFilter filter = GPUImageFilter.create("BrightnessFilter");
+    GPUImageFilter filter = GPUImageFilter.create("GrayscaleFilter");
     sourceImage.addTarget(filter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
     GPUImage.getInstance().setSource(sourceImage);
     sourceImage.proceed();
@@ -80,7 +80,7 @@ This will filter a camera video in real time with Beautify Effect.
 #### Filtering Camera Video
 
     GPUImageSourceCamera sourceCamera = new GPUImageSourceCamera(CameraSampleActivity.this);
-    GPUImageFilter filter = GPUImageFilter.create("BrightnessFilter");
+    GPUImageFilter filter = GPUImageFilter.create("EmbossFilter");
     sourceCamera.addTarget(filter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
     GPUImage.getInstance().setSource(sourceCamera);
 
