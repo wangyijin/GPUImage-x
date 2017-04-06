@@ -85,6 +85,8 @@ GPUImage.getInstance().setSource(sourceImage);
 sourceImage.proceed();
 ```
 
+This will filter an image with Graysacle effect. More filters can be applied in sequence if you want, e.g. `sourceImage.addTarget(filter1).addTarget(filter2). ... .addTarget(filterN).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));`
+
 #### Filtering Camera Video
 
 ```java
@@ -93,6 +95,8 @@ GPUImageFilter filter = GPUImageFilter.create("EmbossFilter");
 sourceCamera.addTarget(filter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
 GPUImage.getInstance().setSource(sourceCamera);
 ```
+
+This will filter a camera video in real time with Emboss Effect.
 
 ## License
     Copyright (C) 2017 Yijin Wang, Yiqian Wang
