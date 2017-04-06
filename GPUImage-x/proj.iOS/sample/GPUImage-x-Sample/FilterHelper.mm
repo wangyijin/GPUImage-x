@@ -50,7 +50,8 @@
         case FILTER_RGB: return @"RGB Adjustment";
         case FILTER_HUE: return @"Hue Adjustment";
         case FILTER_WHITE_BALANCE: return @"White Balance";
-        case FILTER_LUMINANCE_RANGE_FILTER: return @"Luminance Range";
+        case FILTER_LUMINANCE_RANGE: return @"Luminance Range";
+        case FILTER_EMBOSS: return @"Emboss Filter";
         default:break;
     }
     return @"";
@@ -148,9 +149,13 @@
         {
             filter = GPUImage::WhiteBalanceFilter::create();
         }; break;
-        case FILTER_LUMINANCE_RANGE_FILTER:
+        case FILTER_LUMINANCE_RANGE:
         {
             filter = GPUImage::LuminanceRangeFilter::create();
+        }; break;
+        case FILTER_EMBOSS:
+        {
+            filter = GPUImage::EmbossFilter::create();
         }; break;
         default:
             break;
@@ -268,9 +273,14 @@
             value = value * 5000.0 + 2500.0;
             filter->setProperty("temperature", value);
         }; break;
-        case FILTER_LUMINANCE_RANGE_FILTER:
+        case FILTER_LUMINANCE_RANGE:
         {
             filter->setProperty("rangeReductionFactor", value);
+        }; break;
+        case FILTER_EMBOSS:
+        {
+            value = value * 4.0;
+            filter->setProperty("intensity", value);
         }; break;
         default:
             break;

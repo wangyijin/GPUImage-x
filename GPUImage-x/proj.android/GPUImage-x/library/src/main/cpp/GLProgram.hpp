@@ -48,11 +48,12 @@ public:
     void setUniformValue(const std::string& uniformName, int value);
     void setUniformValue(const std::string& uniformName, float value);
     void setUniformValue(const std::string& uniformName, Matrix4 value);
+    void setUniformValue(const std::string& uniformName, Matrix3 value);
     
     void setUniformValue(int uniformLocation, int value);
     void setUniformValue(int uniformLocation, float value);
     void setUniformValue(int uniformLocation, Matrix4 value);
-    
+    void setUniformValue(int uniformLocation, Matrix3 value);
     
 private:
     static std::vector<GLProgram*> _programs;

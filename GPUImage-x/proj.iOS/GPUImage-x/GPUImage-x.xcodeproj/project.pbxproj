@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0F8F041E967FDB007E34AF /* Convolution3x3Filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F8F021E967FDB007E34AF /* Convolution3x3Filter.cpp */; };
+		3C0F8F071E968AF5007E34AF /* EmbossFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F8F051E968AF5007E34AF /* EmbossFilter.cpp */; };
 		3C21FAD01E8A9719007DFE11 /* PosterizeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C21FACE1E8A9719007DFE11 /* PosterizeFilter.cpp */; };
 		3C21FAD31E8A9D47007DFE11 /* LuminanceRangeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C21FAD11E8A9D47007DFE11 /* LuminanceRangeFilter.cpp */; };
 		3C21FAD61E8AA17B007DFE11 /* IOSBlurFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C21FAD41E8AA17B007DFE11 /* IOSBlurFilter.cpp */; };
@@ -75,6 +77,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C0F8F021E967FDB007E34AF /* Convolution3x3Filter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = Convolution3x3Filter.cpp; path = filter/Convolution3x3Filter.cpp; sourceTree = "<group>"; };
+		3C0F8F031E967FDB007E34AF /* Convolution3x3Filter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Convolution3x3Filter.hpp; path = filter/Convolution3x3Filter.hpp; sourceTree = "<group>"; };
+		3C0F8F051E968AF5007E34AF /* EmbossFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = EmbossFilter.cpp; path = filter/EmbossFilter.cpp; sourceTree = "<group>"; };
+		3C0F8F061E968AF5007E34AF /* EmbossFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EmbossFilter.hpp; path = filter/EmbossFilter.hpp; sourceTree = "<group>"; };
 		3C21FACE1E8A9719007DFE11 /* PosterizeFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = PosterizeFilter.cpp; path = filter/PosterizeFilter.cpp; sourceTree = "<group>"; };
 		3C21FACF1E8A9719007DFE11 /* PosterizeFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PosterizeFilter.hpp; path = filter/PosterizeFilter.hpp; sourceTree = "<group>"; };
 		3C21FAD11E8A9D47007DFE11 /* LuminanceRangeFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = LuminanceRangeFilter.cpp; path = filter/LuminanceRangeFilter.cpp; sourceTree = "<group>"; };
@@ -207,6 +213,10 @@
 		3C938F5B1E74356F00EE753C /* filter */ = {
 			isa = PBXGroup;
 			children = (
+				3C0F8F051E968AF5007E34AF /* EmbossFilter.cpp */,
+				3C0F8F061E968AF5007E34AF /* EmbossFilter.hpp */,
+				3C0F8F021E967FDB007E34AF /* Convolution3x3Filter.cpp */,
+				3C0F8F031E967FDB007E34AF /* Convolution3x3Filter.hpp */,
 				3C41515F1E8D45FE00ED6F6D /* SingleComponentGaussianBlurFilter.hpp */,
 				3C4151601E8D45FE00ED6F6D /* SingleComponentGaussianBlurFilter.cpp */,
 				3C4151611E8D45FE00ED6F6D /* SingleComponentGaussianBlurMonoFilter.cpp */,
@@ -427,6 +437,7 @@
 				3C5FF5EF1E7055FE00BF0874 /* Context.cpp in Sources */,
 				3CA677BF1E880B3A00295EEC /* HueFilter.cpp in Sources */,
 				3C938F931E74390700EE753C /* Source.cpp in Sources */,
+				3C0F8F041E967FDB007E34AF /* Convolution3x3Filter.cpp in Sources */,
 				3C938F8B1E74357C00EE753C /* WeakPixelInclusionFilter.cpp in Sources */,
 				3C5FF5F21E7055FE00BF0874 /* GLProgram.cpp in Sources */,
 				3C938F7E1E74357C00EE753C /* BrightnessFilter.cpp in Sources */,
@@ -440,6 +451,7 @@
 				3C5FF5F11E7055FE00BF0874 /* FramebufferCache.cpp in Sources */,
 				3C5FF5F51E7055FE00BF0874 /* Ref.cpp in Sources */,
 				3C938F9F1E74392E00EE753C /* Target.cpp in Sources */,
+				3C0F8F071E968AF5007E34AF /* EmbossFilter.cpp in Sources */,
 				3C938F811E74357C00EE753C /* ColorMatrixFilter.cpp in Sources */,
 				3C938F821E74357C00EE753C /* DirectionalNonMaximumSuppressionFilter.cpp in Sources */,
 				3C5FF5F01E7055FE00BF0874 /* Framebuffer.cpp in Sources */,

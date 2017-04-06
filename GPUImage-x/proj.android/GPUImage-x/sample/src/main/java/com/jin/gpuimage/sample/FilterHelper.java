@@ -49,7 +49,8 @@ public class FilterHelper {
     static final int FILTER_RGB = 19;
     static final int FILTER_HUE = 20;
     static final int FILTER_WHITE_BALANCE = 21;
-    static final int FILTER_LUMINANCE_RANGE_FILTER = 22;
+    static final int FILTER_LUMINANCE_RANGE = 22;
+    static final int FILTER_EMBOSS = 23;
 
     private static FilterList filterList = null;
 
@@ -78,7 +79,8 @@ public class FilterHelper {
             filterList.addFilter(FILTER_RGB, "RGB Adjustment", "RGBFilter");
             filterList.addFilter(FILTER_HUE, "Hue Adjustment", "HueFilter");
             filterList.addFilter(FILTER_WHITE_BALANCE, "White Balance", "WhiteBalanceFilter");
-            filterList.addFilter(FILTER_LUMINANCE_RANGE_FILTER, "Luminance Range", "LuminanceRangeFilter");
+            filterList.addFilter(FILTER_LUMINANCE_RANGE, "Luminance Range", "LuminanceRangeFilter");
+            filterList.addFilter(FILTER_EMBOSS, "Emboss Filter", "EmbossFilter");
         }
         return filterList;
     }
@@ -212,9 +214,14 @@ public class FilterHelper {
                 value = value * 5000.0f + 2500.0f;
                 filter.setProperty("temperature", value);
             }; break;
-            case FILTER_LUMINANCE_RANGE_FILTER:
+            case FILTER_LUMINANCE_RANGE:
             {
                 filter.setProperty("rangeReductionFactor", value);
+            }; break;
+            case FILTER_EMBOSS:
+            {
+                value = value * 4.0f;
+                filter.setProperty("intensity", value);
             }; break;
             default:
                 break;

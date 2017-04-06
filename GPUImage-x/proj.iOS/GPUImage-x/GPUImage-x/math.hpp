@@ -77,8 +77,58 @@ public:
     Matrix4& operator*=(float scalar);
     
     static const Matrix4 IDENTITY;
+};
 
+class Matrix3 {
+public:
+    float m[9];
+    Matrix3();
+    Matrix3(const float* mat);
+    Matrix3(float m11, float m12, float m13, float m21, float m22, float m23, float m31, float m32, float m33);
+    Matrix3(const Matrix3& copy);
+    ~Matrix3();
     
+    void set(float m11, float m12, float m13, float m21, float m22, float m23, float m31, float m32, float m33);
+    void set(const float* mat);
+    void set(const Matrix3& mat);
+    void setIdentity();
+    
+    void negate();
+    Matrix3 getNegated() const;
+    
+    void transpose();
+    Matrix3 getTransposed() const;
+    
+    void add(float scalar);
+    void add(float scalar, Matrix3* dst) const;
+    void add(const Matrix3& mat);
+    static void add(const Matrix3& m1, const Matrix3& m2, Matrix3* dst);
+    
+    void subtract(const Matrix3& mat);
+    static void subtract(const Matrix3& m1, const Matrix3& m2, Matrix3* dst);
+    
+    void multiply(float scalar);
+    void multiply(float scalar, Matrix3* dst) const;
+    static void multiply(const Matrix3& mat, float scalar, Matrix3* dst);
+    void multiply(const Matrix3& mat);
+    static void multiply(const Matrix3& m1, const Matrix3& m2, Matrix3* dst);
+    
+    const Matrix3 operator+(const Matrix3& mat) const;
+    Matrix3& operator+=(const Matrix3& mat);
+    const Matrix3 operator-(const Matrix3& mat) const;
+    Matrix3& operator-=(const Matrix3& mat);
+    const Matrix3 operator-() const;
+    const Matrix3 operator*(const Matrix3& mat) const;
+    Matrix3& operator*=(const Matrix3& mat);
+    
+    const Matrix3 operator+(float scalar) const;
+    Matrix3& operator+=(float scalar);
+    const Matrix3 operator-(float scalar) const;
+    Matrix3& operator-=(float scalar);
+    const Matrix3 operator*(float scalar) const;
+    Matrix3& operator*=(float scalar);
+    
+    static const Matrix3 IDENTITY;
 };
 
 NS_GI_END

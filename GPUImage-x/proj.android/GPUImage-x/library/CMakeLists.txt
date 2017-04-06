@@ -48,6 +48,8 @@ add_library( GPUImage-x
 	     src/main/cpp/filter/NonMaximumSuppressionFilter.cpp
 	     src/main/cpp/filter/SingleComponentGaussianBlurMonoFilter.cpp
 	     src/main/cpp/filter/SingleComponentGaussianBlurFilter.cpp
+	     src/main/cpp/filter/Convolution3x3Filter.cpp
+	     src/main/cpp/filter/EmbossFilter.cpp
              )
 
 find_library( log-lib

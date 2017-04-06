@@ -124,6 +124,11 @@ void GLProgram::setUniformValue(const std::string& uniformName, Matrix4 value) {
     setUniformValue(getUniformLocation(uniformName), value);
 }
 
+void GLProgram::setUniformValue(const std::string& uniformName, Matrix3 value) {
+    Context::getInstance()->setActiveShaderProgram(this);
+    setUniformValue(getUniformLocation(uniformName), value);
+}
+
 void GLProgram::setUniformValue(int uniformLocation, int value) {
     Context::getInstance()->setActiveShaderProgram(this);
     CHECK_GL(glUniform1i(uniformLocation, value));
@@ -136,7 +141,12 @@ void GLProgram::setUniformValue(int uniformLocation, float value) {
 
 void GLProgram::setUniformValue(int uniformLocation, Matrix4 value) {
     Context::getInstance()->setActiveShaderProgram(this);
-    CHECK_GL(glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, (GLfloat *)&value)); // todo
+    CHECK_GL(glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, (GLfloat *)&value));
+}
+
+void GLProgram::setUniformValue(int uniformLocation, Matrix3 value) {
+    Context::getInstance()->setActiveShaderProgram(this);
+    CHECK_GL(glUniformMatrix3fv(uniformLocation, 1, GL_FALSE, (GLfloat *)&value));
 }
 
 NS_GI_END
