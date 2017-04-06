@@ -3,7 +3,9 @@
 
 Idea from: [iOS GPUImage framework](https://github.com/BradLarson/GPUImage) and [Android GPUImage framework](https://github.com/CyberAgent/android-gpuimage)
 
-The GPUImage-x framework is a **cross-platform (for both Android and iOS) library**, which aims to have something similar to GPUImage that let you apply GPU-accelerated filters to images, live camera video. Part of vertex and fragment shaders is taken from GPUImage. The greatest strength of this libray is that it enables you to **maintain your Android and iOS project with one library, as the core code of this framework is written in C++.**
+The GPUImage-x framework is a **cross-platform (for both Android and iOS) library**, which aims to have something similar to GPUImage that let you apply GPU-accelerated filters to images, live camera video. Part of vertex and fragment shaders is taken from GPUImage. 
+
+The greatest strength of GPUImage-x is that it enables you to **develop your Android and iOS project with one library. The core code of this framework is written in C++, and is exactly the same for both iOS and Android projects,** which locates in `GPUImage-x/proj.iOS/GPUImage-x/GPUImage-x/` and `GPUImage-x/proj.android/GPUImage-x/library/src/main/cpp/` respectively.
 
 ## Requirements
 - Android 2.2 or higher 
@@ -36,7 +38,7 @@ Following frameworks are required to be add to your project.
         sourceImage->proceed();
     });
 
-This will filter an image with Gaussian BLur effect. Calls of GPUImage-x functions must be embraced between `GPUImage::Context::getInstance()->runSync([&]{` and `});`, as GPUImage-x code should run in a seperate thread. As you can see, invocation chaining is preferred that will produce concise, elegant, and easy-to-read code. e.g. `sourceImage->addTarget(filter1)->addTarget(filter2)->...->addTarget(filterN)->addTarget(filterView);`
+This will filter an image with Gaussian Blur effect. GPUImage-x function calls must be embraced between `GPUImage::Context::getInstance()->runSync([&]{` and `});`, as GPUImage-x code should run in a seperate thread. As you can see, invocation chaining is preferred that will produce concise, elegant, and easy-to-read code. e.g. `sourceImage->addTarget(filter1)->addTarget(filter2)->...->addTarget(filterN)->addTarget(filterView);`
 
 #### Filtering Camera Video
 
@@ -62,7 +64,6 @@ This will filter a camera video in real time with Beautify Effect.
 
 #### Filtering Camera Video
 
-
 ## License
     Copyright (C) 2017 Yijin Wang, Yiqian Wang
 
@@ -78,7 +79,11 @@ This will filter a camera video in real time with Beautify Effect.
     See the License for the specific language governing permissions and
     limitations under the License.
 
+## TODO
+More filters and features will be added. 
+More platforms will be supported.
+
 ## Donate
-Your donation is appreciated!
+Your donation will be greatly appreciated :)
 
 ![Alipay](https://github.com/wangyijin/raw/blob/master/alipay.jpg?raw=true "alipay")
