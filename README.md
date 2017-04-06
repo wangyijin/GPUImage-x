@@ -58,11 +58,31 @@ This will filter a camera video in real time with Beautify Effect.
 
 ### Gradle dependency
 
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        compile 'com.jin.gpuimage-x:gpuimage-x:1.0.0'
+    }
+
 ### Sample Code
 
 #### Filtering An Image
 
+    Bitmap bmp = BitmapFactory.decodeStream(getAssets().open("test.jpg"));
+    GPUImageSourceImage sourceImage = new GPUImageSourceImage(bmp);
+    GPUImageFilter filter = GPUImageFilter.create("BrightnessFilter");
+    sourceImage.addTarget(filter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+    GPUImage.getInstance().setSource(sourceImage);
+    sourceImage.proceed();
+
 #### Filtering Camera Video
+
+    GPUImageSourceCamera sourceCamera = new GPUImageSourceCamera(CameraSampleActivity.this);
+    GPUImageFilter filter = GPUImageFilter.create("BrightnessFilter");
+    sourceCamera.addTarget(filter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+    GPUImage.getInstance().setSource(sourceCamera);
 
 ## License
     Copyright (C) 2017 Yijin Wang, Yiqian Wang
