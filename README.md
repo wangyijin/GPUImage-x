@@ -33,10 +33,10 @@ GPUImage::Filter* filter;
 GPUImageView* filterView = (GPUImageView*)self.view;
 UIImage* inputImage = [UIImage imageNamed:@"test.jpg"];
 GPUImage::Context::getInstance()->runSync([&]{
-    sourceImage = GPUImage::SourceImage::create(inputImage);
-    filter = GPUImage::GaussianBlurFilter::create();
-    sourceImage->addTarget(filter)->addTarget(filterView);
-    sourceImage->proceed();
+    sourceImage = GPUImage::SourceImage::create(inputImage); // 1. create image source
+    filter = GPUImage::GaussianBlurFilter::create();         // 2. create a filter
+    sourceImage->addTarget(filter)->addTarget(filterView);   // 3. build pipeline
+    sourceImage->proceed();                                  // 4. proceed
 });
 ```
 
@@ -49,10 +49,10 @@ GPUImage::SourceCamera* camera;
 GPUImage::Filter* filter;
 GPUImageView* filterView = (GPUImageView*)self.view;
 GPUImage::Context::getInstance()->runSync([&]{
-    camera = GPUImage::SourceCamera::create();
-    filter = GPUImage::BeautifyFilter::create();
-    camera->addTarget(filter)->addTarget(filterView);
-    camera->start();
+    camera = GPUImage::SourceCamera::create();          // 1. create camera source
+    filter = GPUImage::BeautifyFilter::create();        // 2. create a filter
+    camera->addTarget(filter)->addTarget(filterView);   // 3. build pipeline
+    camera->start();                                    // 4. start the camera and proceed
 });
 ```
 
@@ -77,11 +77,20 @@ dependencies {
 #### Filtering An Image
 
 ```java
+// 1. create image source
 Bitmap bmp = BitmapFactory.decodeStream(getAssets().open("test.jpg"));
-GPUImageSourceImage sourceImage = new GPUImageSourceImage(bmp);
+GPUImageSourceImage sourceImage = new GPUImageSourceImage(bmp);   
+
+// 2. create a filter
 GPUImageFilter filter = GPUImageFilter.create("GrayscaleFilter");
+
+// 3. build the pipeline
 sourceImage.addTarget(filter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+
+// 4. let the GPUImage-x know which source to use
 GPUImage.getInstance().setSource(sourceImage);
+
+// 5. proceed
 sourceImage.proceed();
 ```
 
@@ -90,9 +99,16 @@ This will filter an image with Graysacle effect. More filters can be applied in 
 #### Filtering Camera Video
 
 ```java
+// 1. create the camera source
 GPUImageSourceCamera sourceCamera = new GPUImageSourceCamera(CameraSampleActivity.this);
+
+// 2. create a filter
 GPUImageFilter filter = GPUImageFilter.create("EmbossFilter");
+
+// 3. build the pipeline
 sourceCamera.addTarget(filter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+
+// 4. let the GPUImage-x know which source to use
 GPUImage.getInstance().setSource(sourceCamera);
 ```
 
