@@ -121,6 +121,16 @@ This will filter a camera video in real time with Emboss Effect.
 
 <div>
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_color_invert.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_contrast.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_emboss.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_exposure.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_grayscale.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_pixellation.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_posterize.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_Saturation.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_sketch.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_smooth_toon.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_sobel_edge_detection.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_toon.jpg" />
 </div>
 
