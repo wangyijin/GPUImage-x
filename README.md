@@ -119,7 +119,10 @@ This will filter a camera video in real time with Emboss Effect.
 
 ## Sample Image Result
 
-<div><img src="https://github.com/wangyijin/raw/blob/master/samples/sample_toon.jpg" /></div>
+<div>
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_color_invert.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_toon.jpg" />
+</div>
 
 ## License
     Copyright (C) 2017 Yijin Wang, Yiqian Wang
