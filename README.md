@@ -1,6 +1,6 @@
 # GPUImage-x
 
-<div style="float: right"><img src="https://github.com/wangyijin/raw/blob/master/icon_240.jpg" /></div>
+<div style="float: right"><img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/icon/icon_240.jpg" /></div>
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
@@ -120,13 +120,12 @@ This will filter a camera video in real time with Emboss Effect.
 ## Sample Image Result
 
 <div>
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_contrast.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_emboss.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_pixellation.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_posterize.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_Saturation.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_sketch.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_smooth_toon.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_raw.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_beautify.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_emboss.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_gaussian_blur.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_pixellation.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_posterize.jpg" />
 </div>
 
 ## License
@@ -151,8 +150,8 @@ This will filter a camera video in real time with Emboss Effect.
 ## Donate
 Your donation will be greatly appreciated :)
 
-![Alipay](https://github.com/wangyijin/raw/blob/master/alipay.jpg?raw=true "alipay")
+![Alipay](https://github.com/wangyijin/raw/blob/master/gpuimage-x/alipay.jpg?raw=true "alipay")
 
-## Contract Info
+## Contact Info
 - **Email:** aptx4869wyj@126.com
-- **Wechat:** yijinwang
+- **QQ:** 13264850
