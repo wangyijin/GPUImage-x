@@ -8,7 +8,7 @@ Idea from: [iOS GPUImage framework](https://github.com/BradLarson/GPUImage) and 
 
 The GPUImage-x framework is a **cross-platform (for both Android and iOS) library**, which aims to have something similar to GPUImage that let you apply GPU-accelerated filters to images, live camera video. Part of vertex and fragment shaders is taken from GPUImage. 
 
-The greatest strength of GPUImage-x is that it enables you to **develop your Android and iOS project with one library. The core code of this framework is written in C++, and is exactly the same for both iOS and Android projects,** which locates in `GPUImage-x/proj.iOS/GPUImage-x/GPUImage-x/*.cpp` and `GPUImage-x/proj.android/GPUImage-x/library/src/main/cpp/*.cpp` respectively.
+The greatest strength of GPUImage-x is that it enables you to **develop your Android and iOS project with one library. The core code of this framework is written in C++, and is exactly the same for both iOS and Android projects,** which locates in `GPUImage-x/proj.iOS/GPUImage-x/GPUImage-x/*.cpp` and `GPUImage-x/proj.android/GPUImage-x/library/src/main/cpp/*.cpp` respectively. Also, you can add new customized filters easily.
 
 ## Requirements
 - Android 2.2 or higher 
@@ -120,18 +120,13 @@ This will filter a camera video in real time with Emboss Effect.
 ## Sample Image Result
 
 <div>
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_color_invert.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_contrast.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_emboss.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_exposure.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_grayscale.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_pixellation.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_posterize.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_Saturation.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_sketch.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/samples/sample_smooth_toon.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_sobel_edge_detection.jpg" />
-<img src="https://github.com/wangyijin/raw/blob/master/samples/sample_toon.jpg" />
 </div>
 
 ## License
@@ -157,3 +152,7 @@ This will filter a camera video in real time with Emboss Effect.
 Your donation will be greatly appreciated :)
 
 ![Alipay](https://github.com/wangyijin/raw/blob/master/alipay.jpg?raw=true "alipay")
+
+## Contract Info
+**Email:** aptx4869wyj@126.com
+**Wechat:** yijinwang
