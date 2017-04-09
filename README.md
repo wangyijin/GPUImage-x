@@ -129,7 +129,7 @@ This will filter a camera video in real time with Emboss Effect.
 
 ## Sample Image Result
 
-Here is a few samples of image applied by filters:
+Here is a few samples of images applied by filters:
 
 <div>
 <img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_raw.jpg" />
