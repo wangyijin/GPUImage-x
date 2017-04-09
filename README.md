@@ -154,5 +154,5 @@ Your donation will be greatly appreciated :)
 ![Alipay](https://github.com/wangyijin/raw/blob/master/alipay.jpg?raw=true "alipay")
 
 ## Contract Info
-**Email:** aptx4869wyj@126.com
-**Wechat:** yijinwang
+- **Email:** aptx4869wyj@126.com
+- **Wechat:** yijinwang
