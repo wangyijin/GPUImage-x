@@ -1,4 +1,7 @@
 # GPUImage-x
+
+<div style="float: right"><img src="http://sunsetlakesoftware.com/sites/default/files/GPUImageLogo.png" /></div>
+
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 Idea from: [iOS GPUImage framework](https://github.com/BradLarson/GPUImage) and [Android GPUImage framework](https://github.com/CyberAgent/android-gpuimage)
@@ -60,7 +63,7 @@ This will filter a camera video in real time with Beautify Effect.
 
 ## Usage - Android
 
-### Gradle dependency
+### Gradle Dependency
 
 ```groovy
 repositories {
