@@ -22,10 +22,6 @@ Following frameworks are required to be add to your project.
 - `AVFoundation.framework`
 - `CoreMedia.framework`
 
-### Usage Description in Info.plist
-- `NSPhotoLibraryUsageDescription` must be filled if your app will access photo library.
-- `NSCameraUsageDescription` must be filled if camera is used.
-
 ### Sample Code
 
 #### Filtering An Image
