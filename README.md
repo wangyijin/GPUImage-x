@@ -1,6 +1,6 @@
 # GPUImage-x
 
-<div style="float: right"><img src="http://sunsetlakesoftware.com/sites/default/files/GPUImageLogo.png" /></div>
+<div style="float: right"><img src="https://github.com/wangyijin/raw/blob/master/icon_240.jpg" /></div>
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
