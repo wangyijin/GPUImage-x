@@ -126,6 +126,7 @@ This will filter a camera video in real time with Emboss Effect.
 <img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_gaussian_blur.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_pixellation.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_posterize.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_sketch.jpg" />
 </div>
 
 ## License
