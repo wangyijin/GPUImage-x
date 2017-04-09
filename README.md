@@ -32,10 +32,17 @@ GPUImage::Filter* filter;
 GPUImageView* filterView = (GPUImageView*)self.view;
 UIImage* inputImage = [UIImage imageNamed:@"test.jpg"];
 GPUImage::Context::getInstance()->runSync([&]{
-    sourceImage = GPUImage::SourceImage::create(inputImage); // 1. create image source
-    filter = GPUImage::GaussianBlurFilter::create();         // 2. create a filter
-    sourceImage->addTarget(filter)->addTarget(filterView);   // 3. build pipeline
-    sourceImage->proceed();                                  // 4. proceed
+    // 1. create image source
+    sourceImage = GPUImage::SourceImage::create(inputImage); 
+
+    // 2. create a filter
+    filter = GPUImage::GaussianBlurFilter::create();         
+
+    // 3. build pipeline
+    sourceImage->addTarget(filter)->addTarget(filterView);   
+
+    // 4. proceed
+    sourceImage->proceed();                                  
 });
 ```
 
@@ -48,10 +55,17 @@ GPUImage::SourceCamera* camera;
 GPUImage::Filter* filter;
 GPUImageView* filterView = (GPUImageView*)self.view;
 GPUImage::Context::getInstance()->runSync([&]{
-    camera = GPUImage::SourceCamera::create();          // 1. create camera source
-    filter = GPUImage::BeautifyFilter::create();        // 2. create a filter
-    camera->addTarget(filter)->addTarget(filterView);   // 3. build pipeline
-    camera->start();                                    // 4. start the camera and proceed
+    // 1. create camera source
+    camera = GPUImage::SourceCamera::create(); 
+
+    // 2. create a filter
+    filter = GPUImage::BeautifyFilter::create();  
+
+    // 3. build pipeline      
+    camera->addTarget(filter)->addTarget(filterView);   
+    
+    // 4. start the camera and proceed
+    camera->start();                                    
 });
 ```
 
