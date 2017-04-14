@@ -24,6 +24,8 @@
 		3C5FF5F41E7055FE00BF0874 /* math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5E71E7055FE00BF0874 /* math.cpp */; };
 		3C5FF5F51E7055FE00BF0874 /* Ref.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5E91E7055FE00BF0874 /* Ref.cpp */; };
 		3C5FF5F61E7055FE00BF0874 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FF5ED1E7055FE00BF0874 /* util.cpp */; };
+		3C74D7691EA119600074FEF5 /* HalftoneFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C74D7671EA119600074FEF5 /* HalftoneFilter.cpp */; };
+		3C74D76C1EA121300074FEF5 /* CrosshatchFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C74D76A1EA121300074FEF5 /* CrosshatchFilter.cpp */; };
 		3C8B759B1D8A9DCE00095A63 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8B759A1D8A9DCE00095A63 /* AVFoundation.framework */; };
 		3C8B759D1D8A9DF800095A63 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8B759C1D8A9DF800095A63 /* CoreMedia.framework */; };
 		3C938F7C1E74357C00EE753C /* BeautifyFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C938F5C1E74357C00EE753C /* BeautifyFilter.cpp */; };
@@ -113,6 +115,10 @@
 		3C5FF5EA1E7055FE00BF0874 /* Ref.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ref.hpp; sourceTree = "<group>"; };
 		3C5FF5ED1E7055FE00BF0874 /* util.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = util.cpp; sourceTree = "<group>"; };
 		3C5FF5EE1E7055FE00BF0874 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		3C74D7671EA119600074FEF5 /* HalftoneFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = HalftoneFilter.cpp; path = filter/HalftoneFilter.cpp; sourceTree = "<group>"; };
+		3C74D7681EA119600074FEF5 /* HalftoneFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HalftoneFilter.hpp; path = filter/HalftoneFilter.hpp; sourceTree = "<group>"; };
+		3C74D76A1EA121300074FEF5 /* CrosshatchFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = CrosshatchFilter.cpp; path = filter/CrosshatchFilter.cpp; sourceTree = "<group>"; };
+		3C74D76B1EA121300074FEF5 /* CrosshatchFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CrosshatchFilter.hpp; path = filter/CrosshatchFilter.hpp; sourceTree = "<group>"; };
 		3C8B759A1D8A9DCE00095A63 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3C8B759C1D8A9DF800095A63 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3C938F5C1E74357C00EE753C /* BeautifyFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = BeautifyFilter.cpp; path = filter/BeautifyFilter.cpp; sourceTree = "<group>"; };
@@ -213,6 +219,10 @@
 		3C938F5B1E74356F00EE753C /* filter */ = {
 			isa = PBXGroup;
 			children = (
+				3C74D76A1EA121300074FEF5 /* CrosshatchFilter.cpp */,
+				3C74D76B1EA121300074FEF5 /* CrosshatchFilter.hpp */,
+				3C74D7671EA119600074FEF5 /* HalftoneFilter.cpp */,
+				3C74D7681EA119600074FEF5 /* HalftoneFilter.hpp */,
 				3C0F8F051E968AF5007E34AF /* EmbossFilter.cpp */,
 				3C0F8F061E968AF5007E34AF /* EmbossFilter.hpp */,
 				3C0F8F021E967FDB007E34AF /* Convolution3x3Filter.cpp */,
@@ -459,6 +469,7 @@
 				3C938F801E74357C00EE753C /* ColorInvertFilter.cpp in Sources */,
 				3C938F7D1E74357C00EE753C /* BilateralFilter.cpp in Sources */,
 				3C5003131E7ADCCD006A49F9 /* IOSTarget.cpp in Sources */,
+				3C74D76C1EA121300074FEF5 /* CrosshatchFilter.cpp in Sources */,
 				3C938F891E74357C00EE753C /* HSBFilter.cpp in Sources */,
 				3C5FF5F41E7055FE00BF0874 /* math.cpp in Sources */,
 				3C21FAD01E8A9719007DFE11 /* PosterizeFilter.cpp in Sources */,
@@ -470,6 +481,7 @@
 				3C5FF5F61E7055FE00BF0874 /* util.cpp in Sources */,
 				3C938F941E74390700EE753C /* SourceCamera.cpp in Sources */,
 				3C938F881E74357C00EE753C /* GrayscaleFilter.cpp in Sources */,
+				3C74D7691EA119600074FEF5 /* HalftoneFilter.cpp in Sources */,
 				3C938F7F1E74357C00EE753C /* CannyEdgeDetectionFilter.cpp in Sources */,
 				3C938F871E74357C00EE753C /* GaussianBlurMonoFilter.cpp in Sources */,
 				3CA677B31E87FE7100295EEC /* SaturationFilter.cpp in Sources */,

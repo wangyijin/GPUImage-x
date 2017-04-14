@@ -51,6 +51,8 @@ public class FilterHelper {
     static final int FILTER_WHITE_BALANCE = 21;
     static final int FILTER_LUMINANCE_RANGE = 22;
     static final int FILTER_EMBOSS = 23;
+    static final int FILTER_HALFTONE = 24;
+    static final int FILTER_CROSSHATCH = 25;
 
     private static FilterList filterList = null;
 
@@ -81,6 +83,8 @@ public class FilterHelper {
             filterList.addFilter(FILTER_WHITE_BALANCE, "White Balance", "WhiteBalanceFilter");
             filterList.addFilter(FILTER_LUMINANCE_RANGE, "Luminance Range", "LuminanceRangeFilter");
             filterList.addFilter(FILTER_EMBOSS, "Emboss Filter", "EmbossFilter");
+            filterList.addFilter(FILTER_HALFTONE, "Halftone Filter", "HalftoneFilter");
+            filterList.addFilter(FILTER_CROSSHATCH, "Crosshatch Filter", "CrosshatchFilter");
         }
         return filterList;
     }
@@ -222,6 +226,16 @@ public class FilterHelper {
             {
                 value = value * 4.0f;
                 filter.setProperty("intensity", value);
+            }; break;
+            case FILTER_HALFTONE:
+            {
+                value = value * 0.05f;
+                filter.setProperty("pixelSize", value);
+            }; break;
+            case FILTER_CROSSHATCH:
+            {
+                value = 0.01f + value * 0.05f;
+                filter.setProperty("crossHatchSpacing", value);
             }; break;
             default:
                 break;

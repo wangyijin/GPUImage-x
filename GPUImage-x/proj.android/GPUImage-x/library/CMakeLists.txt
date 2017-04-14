@@ -31,25 +31,27 @@ add_library( GPUImage-x
              src/main/cpp/filter/ColorMatrixFilter.cpp
              src/main/cpp/filter/HSBFilter.cpp
              src/main/cpp/filter/BeautifyFilter.cpp
-	     src/main/cpp/filter/SobelEdgeDetectionFilter.cpp
-	     src/main/cpp/filter/SketchFilter.cpp
-	     src/main/cpp/filter/ToonFilter.cpp
-	     src/main/cpp/filter/PixellationFilter.cpp
-	     src/main/cpp/filter/SaturationFilter.cpp
-	     src/main/cpp/filter/ContrastFilter.cpp
-	     src/main/cpp/filter/ExposureFilter.cpp
-	     src/main/cpp/filter/RGBFilter.cpp
-	     src/main/cpp/filter/HueFilter.cpp
-	     src/main/cpp/filter/WhiteBalanceFilter.cpp
-	     src/main/cpp/filter/SmoothToonFilter.cpp
-	     src/main/cpp/filter/PosterizeFilter.cpp
-	     src/main/cpp/filter/LuminanceRangeFilter.cpp
-	     src/main/cpp/filter/IOSBlurFilter.cpp
-	     src/main/cpp/filter/NonMaximumSuppressionFilter.cpp
-	     src/main/cpp/filter/SingleComponentGaussianBlurMonoFilter.cpp
-	     src/main/cpp/filter/SingleComponentGaussianBlurFilter.cpp
-	     src/main/cpp/filter/Convolution3x3Filter.cpp
-	     src/main/cpp/filter/EmbossFilter.cpp
+             src/main/cpp/filter/SobelEdgeDetectionFilter.cpp
+             src/main/cpp/filter/SketchFilter.cpp
+             src/main/cpp/filter/ToonFilter.cpp
+             src/main/cpp/filter/PixellationFilter.cpp
+             src/main/cpp/filter/SaturationFilter.cpp
+             src/main/cpp/filter/ContrastFilter.cpp
+             src/main/cpp/filter/ExposureFilter.cpp
+             src/main/cpp/filter/RGBFilter.cpp
+             src/main/cpp/filter/HueFilter.cpp
+             src/main/cpp/filter/WhiteBalanceFilter.cpp
+             src/main/cpp/filter/SmoothToonFilter.cpp
+             src/main/cpp/filter/PosterizeFilter.cpp
+             src/main/cpp/filter/LuminanceRangeFilter.cpp
+             src/main/cpp/filter/IOSBlurFilter.cpp
+             src/main/cpp/filter/NonMaximumSuppressionFilter.cpp
+             src/main/cpp/filter/SingleComponentGaussianBlurMonoFilter.cpp
+             src/main/cpp/filter/SingleComponentGaussianBlurFilter.cpp
+             src/main/cpp/filter/Convolution3x3Filter.cpp
+             src/main/cpp/filter/EmbossFilter.cpp
+             src/main/cpp/filter/HalftoneFilter.cpp
+             src/main/cpp/filter/CrosshatchFilter.cpp
              )
 
 find_library( log-lib

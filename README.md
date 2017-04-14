@@ -18,7 +18,7 @@ The greatest strength of GPUImage-x is that it enables you to **develop your And
 ## Usage - iOS
 
 ### Frameworks Dependency
-Following frameworks are required to be add to your project.
+Following frameworks are required to be added to your project.
 - `AVFoundation.framework`
 - `CoreMedia.framework`
 
@@ -139,6 +139,7 @@ Here is a few samples of images applied by filters:
 <img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_pixellation.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_posterize.jpg" />
 <img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_sketch.jpg" />
+<img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/sample_image/sample_crosshatch.jpg" />
 </div>
 
 ## License

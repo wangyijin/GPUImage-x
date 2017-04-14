@@ -52,6 +52,8 @@
         case FILTER_WHITE_BALANCE: return @"White Balance";
         case FILTER_LUMINANCE_RANGE: return @"Luminance Range";
         case FILTER_EMBOSS: return @"Emboss Filter";
+        case FILTER_HALFTONE: return @"Halftone Filter";
+        case FILTER_CROSSHATCH: return @"Crosshatch Filter";
         default:break;
     }
     return @"";
@@ -156,6 +158,14 @@
         case FILTER_EMBOSS:
         {
             filter = GPUImage::EmbossFilter::create();
+        }; break;
+        case FILTER_HALFTONE:
+        {
+            filter = GPUImage::HalftoneFilter::create();
+        }; break;
+        case FILTER_CROSSHATCH:
+        {
+            filter = GPUImage::CrosshatchFilter::create();
         }; break;
         default:
             break;
@@ -281,6 +291,16 @@
         {
             value = value * 4.0;
             filter->setProperty("intensity", value);
+        }; break;
+        case FILTER_HALFTONE:
+        {
+            value = value * 0.05;
+            filter->setProperty("pixelSize", value);
+        }; break;
+        case FILTER_CROSSHATCH:
+        {
+            value = 0.01 + value * 0.05;
+            filter->setProperty("crossHatchSpacing", value);
         }; break;
         default:
             break;

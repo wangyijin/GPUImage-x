@@ -74,5 +74,7 @@
 #include "filter/IOSBlurFilter.hpp"
 #include "filter/Convolution3x3Filter.hpp"
 #include "filter/EmbossFilter.hpp"
+#include "filter/HalftoneFilter.hpp"
+#include "filter/CrosshatchFilter.hpp"
 
 #endif /* GPUImage_x_h */
