@@ -52,6 +52,8 @@ add_library( GPUImage-x
              src/main/cpp/filter/EmbossFilter.cpp
              src/main/cpp/filter/HalftoneFilter.cpp
              src/main/cpp/filter/CrosshatchFilter.cpp
+             src/main/cpp/filter/SphereRefractionFilter.cpp
+             src/main/cpp/filter/GlassSphereFilter.cpp
              )
 
 find_library( log-lib

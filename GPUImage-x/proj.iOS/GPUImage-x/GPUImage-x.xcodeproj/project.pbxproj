@@ -62,6 +62,8 @@
 		3CA677BC1E88082900295EEC /* RGBFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CA677BA1E88082900295EEC /* RGBFilter.cpp */; };
 		3CA677BF1E880B3A00295EEC /* HueFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CA677BD1E880B3A00295EEC /* HueFilter.cpp */; };
 		3CA677C21E880EA700295EEC /* WhiteBalanceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CA677C01E880EA700295EEC /* WhiteBalanceFilter.cpp */; };
+		3CAE3C3A1EA8E40D00757974 /* SphereRefractionFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CAE3C381EA8E40D00757974 /* SphereRefractionFilter.cpp */; };
+		3CAE3C3D1EA8F7D800757974 /* GlassSphereFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CAE3C3B1EA8F7D800757974 /* GlassSphereFilter.cpp */; };
 		3CC8ECF61E894FA300ADD376 /* SmoothToonFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CC8ECF41E894FA300ADD376 /* SmoothToonFilter.cpp */; };
 		3CFE65271E8C1A5400E7C5CF /* NonMaximumSuppressionFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CFE65251E8C1A5400E7C5CF /* NonMaximumSuppressionFilter.cpp */; };
 /* End PBXBuildFile section */
@@ -183,6 +185,10 @@
 		3CA677BE1E880B3A00295EEC /* HueFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HueFilter.hpp; path = filter/HueFilter.hpp; sourceTree = "<group>"; };
 		3CA677C01E880EA700295EEC /* WhiteBalanceFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = WhiteBalanceFilter.cpp; path = filter/WhiteBalanceFilter.cpp; sourceTree = "<group>"; };
 		3CA677C11E880EA700295EEC /* WhiteBalanceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = WhiteBalanceFilter.hpp; path = filter/WhiteBalanceFilter.hpp; sourceTree = "<group>"; };
+		3CAE3C381EA8E40D00757974 /* SphereRefractionFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = SphereRefractionFilter.cpp; path = filter/SphereRefractionFilter.cpp; sourceTree = "<group>"; };
+		3CAE3C391EA8E40D00757974 /* SphereRefractionFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SphereRefractionFilter.hpp; path = filter/SphereRefractionFilter.hpp; sourceTree = "<group>"; };
+		3CAE3C3B1EA8F7D800757974 /* GlassSphereFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = GlassSphereFilter.cpp; path = filter/GlassSphereFilter.cpp; sourceTree = "<group>"; };
+		3CAE3C3C1EA8F7D800757974 /* GlassSphereFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GlassSphereFilter.hpp; path = filter/GlassSphereFilter.hpp; sourceTree = "<group>"; };
 		3CC8ECF41E894FA300ADD376 /* SmoothToonFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = SmoothToonFilter.cpp; path = filter/SmoothToonFilter.cpp; sourceTree = "<group>"; };
 		3CC8ECF51E894FA300ADD376 /* SmoothToonFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SmoothToonFilter.hpp; path = filter/SmoothToonFilter.hpp; sourceTree = "<group>"; };
 		3CFDD56E1D7AB2F500E37EA3 /* libGPUImage-x iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libGPUImage-x iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +225,10 @@
 		3C938F5B1E74356F00EE753C /* filter */ = {
 			isa = PBXGroup;
 			children = (
+				3CAE3C3B1EA8F7D800757974 /* GlassSphereFilter.cpp */,
+				3CAE3C3C1EA8F7D800757974 /* GlassSphereFilter.hpp */,
+				3CAE3C381EA8E40D00757974 /* SphereRefractionFilter.cpp */,
+				3CAE3C391EA8E40D00757974 /* SphereRefractionFilter.hpp */,
 				3C74D76A1EA121300074FEF5 /* CrosshatchFilter.cpp */,
 				3C74D76B1EA121300074FEF5 /* CrosshatchFilter.hpp */,
 				3C74D7671EA119600074FEF5 /* HalftoneFilter.cpp */,
@@ -435,6 +445,7 @@
 				3C4151641E8D45FE00ED6F6D /* SingleComponentGaussianBlurMonoFilter.cpp in Sources */,
 				3C938F971E74391000EE753C /* SourceCamera.h in Sources */,
 				3C938F981E74391000EE753C /* SourceImage.h in Sources */,
+				3CAE3C3A1EA8E40D00757974 /* SphereRefractionFilter.cpp in Sources */,
 				3C938F951E74390700EE753C /* SourceImage.cpp in Sources */,
 				3CA677B91E8805D300295EEC /* ExposureFilter.cpp in Sources */,
 				3CA677A61E86C22200295EEC /* SobelEdgeDetectionFilter.cpp in Sources */,
@@ -462,6 +473,7 @@
 				3C5FF5F51E7055FE00BF0874 /* Ref.cpp in Sources */,
 				3C938F9F1E74392E00EE753C /* Target.cpp in Sources */,
 				3C0F8F071E968AF5007E34AF /* EmbossFilter.cpp in Sources */,
+				3CAE3C3D1EA8F7D800757974 /* GlassSphereFilter.cpp in Sources */,
 				3C938F811E74357C00EE753C /* ColorMatrixFilter.cpp in Sources */,
 				3C938F821E74357C00EE753C /* DirectionalNonMaximumSuppressionFilter.cpp in Sources */,
 				3C5FF5F01E7055FE00BF0874 /* Framebuffer.cpp in Sources */,

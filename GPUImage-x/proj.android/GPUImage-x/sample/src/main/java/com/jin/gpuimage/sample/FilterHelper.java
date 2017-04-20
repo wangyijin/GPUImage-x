@@ -53,6 +53,8 @@ public class FilterHelper {
     static final int FILTER_EMBOSS = 23;
     static final int FILTER_HALFTONE = 24;
     static final int FILTER_CROSSHATCH = 25;
+    static final int FILTER_SPHERE_REFRACTION = 26;
+    static final int FILTER_GLASS_SPHERE = 27;
 
     private static FilterList filterList = null;
 
@@ -85,6 +87,8 @@ public class FilterHelper {
             filterList.addFilter(FILTER_EMBOSS, "Emboss Filter", "EmbossFilter");
             filterList.addFilter(FILTER_HALFTONE, "Halftone Filter", "HalftoneFilter");
             filterList.addFilter(FILTER_CROSSHATCH, "Crosshatch Filter", "CrosshatchFilter");
+            filterList.addFilter(FILTER_SPHERE_REFRACTION, "Sphere Refraction Filter", "SphereRefractionFilter");
+            filterList.addFilter(FILTER_GLASS_SPHERE, "Glass Sphere Filter", "GlassSphereFilter");
         }
         return filterList;
     }
@@ -236,6 +240,14 @@ public class FilterHelper {
             {
                 value = 0.01f + value * 0.05f;
                 filter.setProperty("crossHatchSpacing", value);
+            }; break;
+            case FILTER_SPHERE_REFRACTION:
+            {
+                filter.setProperty("radius", value);
+            }; break;
+            case FILTER_GLASS_SPHERE:
+            {
+                filter.setProperty("radius", value);
             }; break;
             default:
                 break;

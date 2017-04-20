@@ -23,6 +23,60 @@
 
 NS_GI_BEGIN
 
+class Vector2
+{
+public:
+
+    float x;
+    float y;
+
+    Vector2();
+    Vector2(float xx, float yy);
+    Vector2(const float* array);
+    Vector2(const Vector2& p1, const Vector2& p2);
+    Vector2(const Vector2& copy);
+    ~Vector2();
+
+    bool isZero() const;
+    bool isOne() const;
+    static float angle(const Vector2& v1, const Vector2& v2);
+    void add(const Vector2& v);
+    static void add(const Vector2& v1, const Vector2& v2, Vector2* dst);
+    void clamp(const Vector2& min, const Vector2& max);
+    static void clamp(const Vector2& v, const Vector2& min, const Vector2& max, Vector2* dst);
+    float distance(const Vector2& v) const;
+    float distanceSquared(const Vector2& v) const;
+    float dot(const Vector2& v) const;
+    static float dot(const Vector2& v1, const Vector2& v2);
+    float length() const;
+    float lengthSquared() const;
+    void negate();
+    void normalize();
+    Vector2 getNormalized() const;
+    void scale(float scalar);
+    void scale(const Vector2& scale);
+    void rotate(const Vector2& point, float angle);
+    void set(float xx, float yy);
+    void set(const Vector2& v);
+    void set(const Vector2& p1, const Vector2& p2);
+    void setZero();
+    void subtract(const Vector2& v);
+    static void subtract(const Vector2& v1, const Vector2& v2, Vector2* dst);
+    void smooth(const Vector2& target, float elapsedTime, float responseTime);
+    const Vector2 operator+(const Vector2& v) const;
+    Vector2& operator+=(const Vector2& v);
+    const Vector2 operator-(const Vector2& v) const;
+    Vector2& operator-=(const Vector2& v);
+    const Vector2 operator-() const;
+    const Vector2 operator*(float s) const;
+    Vector2& operator*=(float s);
+    const Vector2 operator/(float s) const;
+    bool operator<(const Vector2& v) const;
+    bool operator>(const Vector2& v) const;
+    bool operator==(const Vector2& v) const;
+    bool operator!=(const Vector2& v) const;
+};
+
 class Vector3 {
     
 };

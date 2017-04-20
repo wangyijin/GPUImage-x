@@ -76,5 +76,7 @@
 #include "filter/EmbossFilter.hpp"
 #include "filter/HalftoneFilter.hpp"
 #include "filter/CrosshatchFilter.hpp"
+#include "filter/SphereRefractionFilter.hpp"
+#include "filter/GlassSphereFilter.hpp"
 
 #endif /* GPUImage_x_h */

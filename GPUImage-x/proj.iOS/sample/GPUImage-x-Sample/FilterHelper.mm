@@ -54,6 +54,8 @@
         case FILTER_EMBOSS: return @"Emboss Filter";
         case FILTER_HALFTONE: return @"Halftone Filter";
         case FILTER_CROSSHATCH: return @"Crosshatch Filter";
+        case FILTER_SPHERE_REFRACTION: return @"Sphere Refraction Filter";
+        case FILTER_GLASS_SPHERE: return @"Glass Sphere Filter";
         default:break;
     }
     return @"";
@@ -166,6 +168,14 @@
         case FILTER_CROSSHATCH:
         {
             filter = GPUImage::CrosshatchFilter::create();
+        }; break;
+        case FILTER_SPHERE_REFRACTION:
+        {
+            filter = GPUImage::SphereRefractionFilter::create();
+        }; break;
+        case FILTER_GLASS_SPHERE:
+        {
+            filter = GPUImage::GlassSphereFilter::create();
         }; break;
         default:
             break;
@@ -302,6 +312,14 @@
             value = 0.01 + value * 0.05;
             filter->setProperty("crossHatchSpacing", value);
         }; break;
+        case FILTER_SPHERE_REFRACTION:
+        {
+            filter->setProperty("radius", value);
+        }; break;
+        case FILTER_GLASS_SPHERE:
+        {
+            filter->setProperty("radius", value);
+        }
         default:
             break;
     }

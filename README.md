@@ -8,7 +8,7 @@ Idea from: [iOS GPUImage framework](https://github.com/BradLarson/GPUImage) and 
 
 The GPUImage-x framework is a **cross-platform (for both Android and iOS) library**, which aims to have something similar to GPUImage that let you apply GPU-accelerated filters to images, live camera video. Part of vertex and fragment shaders is taken from GPUImage. 
 
-The greatest strength of GPUImage-x is that it enables you to **develop your Android and iOS project with one library. The core code of this framework is written in C++, and is exactly the same for both iOS and Android projects,** which locates in `GPUImage-x/proj.iOS/GPUImage-x/GPUImage-x/*.cpp` and `GPUImage-x/proj.android/GPUImage-x/library/src/main/cpp/*.cpp` respectively. Also, you can extend customized filters easily.
+The greatest strength of GPUImage-x is that it enables you to **develop your Android and iOS project with one library. The core code of this framework is written in C++, and is exactly the same for both iOS and Android projects,** which locates in `GPUImage-x/proj.iOS/GPUImage-x/GPUImage-x/*.cpp` and `GPUImage-x/proj.android/GPUImage-x/library/src/main/cpp/*.cpp` respectively. Also, you can extend your customized filters easily.
 
 ## Requirements
 - Android 2.2 or higher 
