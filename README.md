@@ -127,7 +127,7 @@ GPUImage.getInstance().setSource(sourceCamera);
 
 This will filter a camera video in real time with Emboss Effect.
 
-## Sample Image Result
+## Sample Results
 
 Here is a few samples of images applied by filters:
 

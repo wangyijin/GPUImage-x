@@ -61,9 +61,9 @@ const std::string kGlassSphereFragmentShaderString = SHADER_STRING
      finalSphereColor += lightingIntensity;
      
      // Specular lighting
-     lightingIntensity  = clamp(dot(normalize(lightPosition), sphereNormal), 0.0, 1.0);
-     lightingIntensity  = pow(lightingIntensity, 15.0);
-     finalSphereColor += vec3(0.8, 0.8, 0.8) * lightingIntensity;
+     //lightingIntensity  = clamp(dot(normalize(lightPosition), sphereNormal), 0.0, 1.0);
+     //lightingIntensity  = pow(lightingIntensity, 15.0);
+     //finalSphereColor += vec3(0.8, 0.8, 0.8) * lightingIntensity;
      
      gl_FragColor = vec4(finalSphereColor, 1.0) * checkForPresenceWithinSphere;
  }
