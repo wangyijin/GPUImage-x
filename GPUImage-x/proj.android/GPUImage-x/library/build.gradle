@@ -26,5 +26,5 @@ android {
 publish {
     groupId = 'com.jin.gpuimage-x'
     artifactId = 'gpuimage-x'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
 }
