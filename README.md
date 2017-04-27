@@ -81,7 +81,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.jin.gpuimage-x:gpuimage-x:1.0.0'
+    compile 'com.jin.gpuimage-x:gpuimage-x:1.0.1'
 }
 ```
 
