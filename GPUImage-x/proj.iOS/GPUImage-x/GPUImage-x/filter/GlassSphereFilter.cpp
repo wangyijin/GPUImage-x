@@ -37,8 +37,6 @@ const std::string kGlassSphereFragmentShaderString = SHADER_STRING
  const highp vec3 ambientLightPosition = vec3(0.0, 0.0, 1.0);
 
  
- const highp vec3 W = vec3(0.2125, 0.7154, 0.0721);
- 
  void main()
  {
      highp vec2 textureCoordinateToUse = vec2(vTexCoord.x, (vTexCoord.y * aspectRatio + 0.5 - 0.5 * aspectRatio));
