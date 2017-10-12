@@ -167,6 +167,5 @@ Your donation will be greatly appreciated :)
 ![Alipay](https://github.com/wangyijin/raw/blob/master/gpuimage-x/alipay.jpg?raw=true "alipay")
 
 ## Contact Info
-- **QQ Group:** 21486619
 - **Email:** aptx4869wyj@126.com
 - **More:** http://yijin.wang
