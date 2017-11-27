@@ -2,14 +2,72 @@
 
 #include <jni.h>
 #include <string>
+#include <android/log.h>
 #include <android/bitmap.h>
 #include "source/SourceImage.h"
 #include "source/SourceCamera.h"
 #include "target/TargetView.h"
+#include "target/TargetRawDataOutput.h"
 #include "filter/Filter.hpp"
 #include "Context.hpp"
 
 USING_NS_GI
+
+class TargetRawDataDelegate : public ITargetRawDataDelegate {
+public:
+    TargetRawDataDelegate() :
+            _env (nullptr) ,
+            _objClazz(nullptr),
+            _callback(nullptr)
+    {
+
+    };
+
+    TargetRawDataDelegate( JNIEnv* env, jobject clazz, jmethodID callback) :
+            _env(env) ,
+            _objClazz(clazz),
+            _callback(callback)
+    {
+
+    }
+
+    virtual ~TargetRawDataDelegate()
+    {
+        __android_log_print (ANDROID_LOG_DEBUG, __FUNCTION__ ,  "dealloc");
+        if (_env != nullptr && _objClazz != nullptr) {
+            _env->DeleteGlobalRef(_objClazz);
+            _objClazz = nullptr;
+        }
+        _env = nullptr;
+        _callback = nullptr;
+    }
+
+    virtual void newFrameAvailableBlock(TargetRawDataOutput* output)
+    {
+//        __android_log_print (ANDROID_LOG_DEBUG, __FUNCTION__ ,  "callback");
+        if (!_env || !_objClazz || !_callback)
+            return;
+        int width,height;
+        GLubyte *bytes =  output->getRawBytesForImage(width, height);
+        int bytesPerRow = output->getBytesPerRowInOutput();
+        int frameSize = bytesPerRow * height * sizeof(unsigned char);
+
+        jbyteArray jresult = NULL;
+        if (bytes) {
+            jbyte* by = (jbyte*)bytes;
+            jresult = _env->NewByteArray(frameSize);
+            _env->SetByteArrayRegion(jresult, 0, frameSize, by);
+        }
+
+        _env->CallVoidMethod(_objClazz, _callback, jresult, bytesPerRow);
+        _env->DeleteLocalRef(jresult);
+    }
+
+public:
+    JNIEnv      *_env;
+    jobject     _objClazz;
+    jmethodID   _callback;
+};
 
 extern "C"
 jlong Java_com_jin_gpuimage_GPUImage_nativeSourceImageNew(
@@ -230,6 +288,50 @@ void Java_com_jin_gpuimage_GPUImage_nativeTargetViewSetFillMode(
         jint fillMode)
 {
     ((TargetView*)classId)->setFillMode((TargetView::FillMode)fillMode);
+};
+
+extern "C"
+jlong Java_com_jin_gpuimage_GPUImage_nativeTargetRawDataOutputNew
+        (JNIEnv *env, jclass obj, jint width, jint height, jboolean setRBGA)
+{
+    return (uintptr_t)(new TargetRawDataOutput(width, height, setRBGA));
+}
+
+
+extern "C"
+void Java_com_jin_gpuimage_GPUImage_nativeTargetRawDataOutputFinalize
+        (JNIEnv *env, jclass obj, jlong classId)
+{
+    ((TargetRawDataOutput*)classId)->release();
+}
+
+extern "C"
+void Java_com_jin_gpuimage_GPUImage_nativeTargetRawDataOutputNewFrameAvailableCallback
+        (JNIEnv *env, jclass, jlong classId, jobject callback)
+{
+    if (callback == NULL) {
+        ((TargetRawDataOutput*)classId)->setTargetRawDataDelegate(nullptr);
+    } else {
+        jobject objClazz = env->NewGlobalRef(callback);
+        jclass jclsProcess = env->GetObjectClass(objClazz);
+        if (jclsProcess == NULL) {
+            __android_log_print (ANDROID_LOG_ERROR, __FUNCTION__ ,  "Android GetObjectClass failed!!!");
+            env->DeleteGlobalRef(objClazz);
+            ((TargetRawDataOutput*)classId)->setTargetRawDataDelegate(nullptr);
+            return;
+        }
+
+        jmethodID jMethod = env->GetMethodID(jclsProcess, "onNewFrameAvailable", "([BI)V");
+        if (jMethod ==  NULL) {
+            __android_log_print (ANDROID_LOG_ERROR, __FUNCTION__ ,  "Android GetObjectClass CallBack failed!!!");
+            env->DeleteGlobalRef(objClazz);
+            ((TargetRawDataOutput*)classId)->setTargetRawDataDelegate(nullptr);
+            return;
+        }
+
+        std::shared_ptr<TargetRawDataDelegate> delegate = std::make_shared<TargetRawDataDelegate>(env, objClazz, jMethod);
+        ((TargetRawDataOutput*)classId)->setTargetRawDataDelegate(delegate);
+    }
 };
 
 extern "C"

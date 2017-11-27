@@ -15,6 +15,7 @@ add_library( GPUImage-x
              src/main/cpp/source/SourceCamera.cpp
              src/main/cpp/target/Target.cpp
              src/main/cpp/target/TargetView.cpp
+             src/main/cpp/target/TargetRawDataOutput.cpp
              src/main/cpp/filter/Filter.cpp
              src/main/cpp/filter/FilterGroup.cpp
              src/main/cpp/filter/BrightnessFilter.cpp

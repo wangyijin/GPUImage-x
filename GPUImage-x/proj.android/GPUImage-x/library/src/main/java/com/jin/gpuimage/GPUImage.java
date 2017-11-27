@@ -187,6 +187,14 @@ public class GPUImage {
     public static native void nativeTargetViewFinalize(final long classID);
     public static native void nativeTargetViewOnSizeChanged(final long classID, final int width, final int height);
     public static native void nativeTargetViewSetFillMode(final long classID, final int fillMode);
+
+    // Target
+    public static native long nativeTargetRawDataOutputNew(final int width, final int height, final boolean resultsInBGRAFormat);
+    public static native void nativeTargetRawDataOutputFinalize(final long classID);
+    public static native void nativeTargetRawDataOutputNewFrameAvailableCallback(final long classID, final Object callback);
+    public static native byte[] nativeTargetRawDataOutputGetRawBytesForImage(final long classId);
+    public static native long nativeTargetRawDataOutputGetBytesPerRowInOutput(final long classId);
+
     // context
     public static native void nativeContextInit();
     public static native void nativeContextDestroy();
