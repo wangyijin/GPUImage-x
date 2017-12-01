@@ -50,6 +50,7 @@ Source* Source::addTarget(Target* target) {
 }
 
 Source* Source::addTarget(Target* target, int texIdx) {
+
     if (!hasTarget(target)) {
         _targets[target] = texIdx;
         target->setInputFramebuffer(_framebuffer, RotationMode::NoRotation, texIdx);

@@ -58,6 +58,7 @@ public class GPUImageRawDataOutput implements GPUImageTarget {
                 }
             }
         });
+        GPUImage.getInstance().requestRender();
     }
 
     public interface NewFrameAvailableCallback {

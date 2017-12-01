@@ -20,23 +20,29 @@ package com.jin.gpuimage;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
+import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.os.Build;
 import android.view.Surface;
 import android.view.WindowManager;
+
 import java.io.IOException;
 import java.nio.IntBuffer;
+
+import javax.microedition.khronos.opengles.GL10;
 
 
 public class GPUImageSourceCamera extends GPUImageSource implements Camera.PreviewCallback {
     private Camera mCamera;
-    private int mCurrentCameraId = 0;
+    private int mCurrentCameraId = 1;
     private IntBuffer mRGBABuffer;
     private int mRotation = GPUImage.NoRotation;
     private Context mContext;
     private SurfaceTexture mSurfaceTexture = null;
+    int[] textures = new int[1];
 
     public GPUImageSourceCamera(Context context) {
         mContext = context;
@@ -84,12 +90,17 @@ public class GPUImageSourceCamera extends GPUImageSource implements Camera.Previ
     }
 
     private void setUpCamera(final int id) {
+
         mCamera = Camera.open(id);
         Camera.Parameters parameters = mCamera.getParameters();
         if (parameters.getSupportedFocusModes().contains(
                 Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         }
+        parameters.setPreviewFormat(ImageFormat.NV21);
+        parameters.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);//自动白平衡
+        parameters.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);//自动相机场景类型
+        parameters.setRotation(90);
         mCamera.setParameters(parameters);
 
         int deviceRotation = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
@@ -146,17 +157,63 @@ public class GPUImageSourceCamera extends GPUImageSource implements Camera.Previ
         }
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.GINGERBREAD_MR1) {
+//            GPUImage.getInstance().runOnDraw(new Runnable() {
+//                @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+//                @Override
+//                public void run() {
+//                    if (mNativeClassID != 0) {
+//                        int[] textures = new int[1];
+//                        GLES20.glGenTextures(1, textures, 0);
+//                        mSurfaceTexture = new SurfaceTexture(textures[0]);
+//                        try {
+//                            mCamera.setPreviewTexture(mSurfaceTexture);
+//                            mCamera.setPreviewCallback(GPUImageSourceCamera.this);
+//                            mCamera.startPreview();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//            });
+//            GPUImage.getInstance().requestRender();
             GPUImage.getInstance().runOnDraw(new Runnable() {
                 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
                 @Override
                 public void run() {
                     if (mNativeClassID != 0) {
-                        int[] textures = new int[1];
+
                         GLES20.glGenTextures(1, textures, 0);
                         mSurfaceTexture = new SurfaceTexture(textures[0]);
+                        GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, textures[0]);
+                        GLES20.glTexParameterf(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+                                GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_LINEAR);
+                        GLES20.glTexParameterf(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+                                GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR);
+                        GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+                                GL10.GL_TEXTURE_WRAP_S, GL10.GL_CLAMP_TO_EDGE);
+                        GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES,
+                                GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_EDGE);
+
+                        final Camera.Size previewSize = mCamera.getParameters().getPreviewSize();
+
+
+                        mSurfaceTexture.setOnFrameAvailableListener(new SurfaceTexture.OnFrameAvailableListener() {
+                            @Override
+                            public void onFrameAvailable(SurfaceTexture surfaceTexture) {
+
+                                final SurfaceTexture surface = surfaceTexture;
+                                GPUImage.getInstance().runOnDraw(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        surface.updateTexImage();
+                                        GPUImage.nativeSourceCameraSetFrameTexture(mNativeClassID, previewSize.width, previewSize.height, textures, mRotation);
+                                    }
+                                });
+                                proceed(true, true);
+                            }
+                        });
                         try {
                             mCamera.setPreviewTexture(mSurfaceTexture);
-                            mCamera.setPreviewCallback(GPUImageSourceCamera.this);
                             mCamera.startPreview();
                         } catch (IOException e) {
                             e.printStackTrace();

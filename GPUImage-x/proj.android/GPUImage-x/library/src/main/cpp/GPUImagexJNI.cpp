@@ -9,6 +9,7 @@
 #include "target/TargetView.h"
 #include "target/TargetRawDataOutput.h"
 #include "filter/Filter.hpp"
+#include "filter/CropFilter.hpp"
 #include "Context.hpp"
 
 USING_NS_GI
@@ -161,6 +162,21 @@ void Java_com_jin_gpuimage_GPUImage_nativeSourceCameraSetFrame(
 };
 
 extern "C"
+void Java_com_jin_gpuimage_GPUImage_nativeSourceCameraSetFrameTexture
+        (JNIEnv *env,
+         jclass,
+         jlong classId,
+         jint width,
+         jint height,
+         jintArray textures,
+         jint rotation)
+{
+    GLuint* nativeTextures = (GLuint *)env->GetIntArrayElements(textures,0);
+    ((SourceCamera*)classId)->setFrameTexture(width, height, nativeTextures, (RotationMode)rotation);
+    env->ReleaseIntArrayElements(textures, (jint*)nativeTextures, 0);
+}
+
+extern "C"
 jlong Java_com_jin_gpuimage_GPUImage_nativeSourceAddTarget(
         JNIEnv *env,
         jobject,
@@ -171,6 +187,7 @@ jlong Java_com_jin_gpuimage_GPUImage_nativeSourceAddTarget(
 {
     Source* source = (Source *) classId;
     Target* target = isFilter ? dynamic_cast<Target*>((Filter*)targetClassId) : (Target*)targetClassId;
+
     if (texID >= 0) {
         return (uintptr_t) (source->addTarget(target, texID));
     } else {
@@ -408,6 +425,31 @@ void Java_com_jin_gpuimage_GPUImage_nativeFilterSetPropertyString(
     env->ReleaseStringUTFChars(jValue, value);
 
 };
+
+extern "C" jlong JNICALL Java_com_jin_gpuimage_GPUImage_nativeCropFilterCreate
+        (JNIEnv *env, jclass, jfloat left, jfloat top, jfloat right, jfloat bottom)
+{
+    return (uintptr_t) CropFilter::create(RectF(left, top, right, bottom));
+}
+
+extern "C" void JNICALL Java_com_jin_gpuimage_GPUImage_nativeCropFilterDestroy
+        (JNIEnv *env, jclass, jlong classId)
+{
+    ((Filter*)classId)->release();
+}
+
+extern "C" void JNICALL Java_com_jin_gpuimage_GPUImage_nativeCropFilterFinalize
+        (JNIEnv *env, jclass, jlong classId)
+{
+    ((Filter*)classId)->releaseFramebuffer(false);
+    ((Filter*)classId)->release();
+}
+
+extern "C" void JNICALL Java_com_jin_gpuimage_GPUImage_nativeCropFilterSetCropRegion
+        (JNIEnv *env, jclass, jlong classId, jfloat left, jfloat top, jfloat right, jfloat bottom)
+{
+    ((CropFilter*)classId)->setCropRegion(RectF(left, top, right, bottom));
+}
 
 extern "C"
 void Java_com_jin_gpuimage_GPUImage_nativeContextInit(

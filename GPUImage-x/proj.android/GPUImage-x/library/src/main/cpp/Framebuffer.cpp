@@ -123,6 +123,7 @@ void Framebuffer::_generateTexture() {
 }
 
 void Framebuffer::_generateFramebuffer() {
+
     CHECK_GL(glGenFramebuffers(1, &_framebuffer));
     CHECK_GL(glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer));
     _generateTexture();

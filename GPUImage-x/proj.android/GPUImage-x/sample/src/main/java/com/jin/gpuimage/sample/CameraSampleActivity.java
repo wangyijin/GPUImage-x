@@ -20,6 +20,7 @@ package com.jin.gpuimage.sample;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.RectF;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,6 +29,7 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Toast;
 import com.jin.gpuimage.GPUImage;
+import com.jin.gpuimage.GPUImageCropFilter;
 import com.jin.gpuimage.GPUImageFilter;
 import com.jin.gpuimage.GPUImageRawDataOutput;
 import com.jin.gpuimage.GPUImageSource;
@@ -65,8 +67,12 @@ public class CameraSampleActivity extends Activity implements View.OnClickListen
 
         rawDataOutput.setNewFrameAvailableCallback(this);
 
-        sourceCamera.addTarget(filter);
-        filter.addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+
+        GPUImageView view =(GPUImageView) findViewById(R.id.gpuimagexview);
+        view.setFillMode(0);
+        GPUImageCropFilter cropFilter = GPUImageCropFilter.create(new RectF(0.0f, 0.21875f, 1.0f, 0.5625f));
+        sourceCamera.addTarget(cropFilter).addTarget(filter);
+        filter.addTarget(view);
         filter.addTarget(rawDataOutput);
 
         GPUImage.getInstance().setSource(sourceCamera);
