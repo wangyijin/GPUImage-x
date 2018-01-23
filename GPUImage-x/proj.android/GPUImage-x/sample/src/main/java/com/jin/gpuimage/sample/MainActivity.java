@@ -40,15 +40,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_camera_sample).setOnClickListener(this);
     }
 
-    @Override public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                                     int[] grantResults) {
-        if (grantResults.length != 1 || grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (requestCode == R.id.btn_camera_sample) {
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+
+        if(requestCode == R.id.btn_camera_sample){
+            if (PermissionChecker.checkSelfPermission(this, Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_GRANTED &&
+                    PermissionChecker.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            == PackageManager.PERMISSION_GRANTED) {
                 startActivity(new Intent(this, CameraSampleActivity.class));
             }
-        } else {
-            Log.e("Jin", "onRequestPermissionsResult: camera permission denied");
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        } else if(requestCode == R.id.btn_image_sample){
+            if (PermissionChecker.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                startActivity(new Intent(this, ImageSampleActivity.class));
+            }
         }
     }
 
@@ -56,12 +63,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_image_sample:
-                startActivity(new Intent(this, ImageSampleActivity.class));
+                if (PermissionChecker.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_DENIED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, v.getId());
+                } else {
+                    startActivity(new Intent(this, ImageSampleActivity.class));
+                }
                 break;
             case R.id.btn_camera_sample:
                 if (PermissionChecker.checkSelfPermission(this, Manifest.permission.CAMERA)
-                        == PackageManager.PERMISSION_DENIED) {
-                    ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, v.getId());
+                        == PackageManager.PERMISSION_DENIED ||
+                        PermissionChecker.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                                == PackageManager.PERMISSION_DENIED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, v.getId());
                 } else {
                     startActivity(new Intent(this, CameraSampleActivity.class));
                 }
