@@ -18,7 +18,7 @@
 
 #include <cmath>
 #include "SingleComponentGaussianBlurFilter.hpp"
-#include "util.h"
+#include "../util.h"
 
 NS_GI_BEGIN
 
