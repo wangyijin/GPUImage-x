@@ -24,7 +24,7 @@ USING_NS_GI
 
 SourceImage* SourceImage::create(int width, int height, const void* pixels) {
     SourceImage* sourceImage = new SourceImage();
-    sourceImage->setImage(width, width, pixels);
+    sourceImage->setImage(width, height, pixels);
     return sourceImage;
 }
 
