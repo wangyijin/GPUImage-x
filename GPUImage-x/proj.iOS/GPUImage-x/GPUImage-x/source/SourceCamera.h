@@ -49,6 +49,8 @@ public:
     bool isRunning();
     bool flip();
     
+    float getFieldOfView();
+    
     AVCaptureDevicePosition getCameraPosition();
     void setOutputImageOrientation(UIInterfaceOrientation orientation);
     void setHorizontallyMirrorFrontFacingCamera(bool newValue);
@@ -60,6 +62,7 @@ private:
     VideoDataOutputSampleBufferDelegate* _videoDataOutputSampleBufferDelegate;
     AVCaptureSession* _captureSession;
     BOOL _capturePaused;
+    float _fieldOfView;
     GPUImage::RotationMode _outputRotation;
     //GPUImage::RotationMode internalRotation;
     AVCaptureDeviceInput* _captureDeviceInput;

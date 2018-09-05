@@ -66,10 +66,7 @@ void SourceCamera::setFrameData(int width, int height, const void* pixels, Rotat
 
 #if PLATFORM == PLATFORM_IOS
 bool SourceCamera::init() {
-    if (isCameraExist(AVCaptureDevicePositionFront))
-        return init(AVCaptureSessionPreset640x480, AVCaptureDevicePositionFront);
-    else
-        return init(AVCaptureSessionPreset640x480, AVCaptureDevicePositionBack);
+    return init(AVCaptureSessionPreset640x480, AVCaptureDevicePositionBack);
 }
 
 bool SourceCamera::init(NSString* sessionPreset, AVCaptureDevicePosition cameraPosition) {
@@ -91,6 +88,8 @@ bool SourceCamera::init(NSString* sessionPreset, AVCaptureDevicePosition cameraP
         }
     }
     if (!device) return false;
+    
+    _fieldOfView = device.activeFormat.videoFieldOfView;
     
     NSError *error = nil;
     _captureDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -205,6 +204,11 @@ bool SourceCamera::flip() {
 AVCaptureDevicePosition SourceCamera::getCameraPosition()
 {
     return [[_captureDeviceInput device] position];
+}
+
+float SourceCamera::getFieldOfView()
+{
+    return _fieldOfView;
 }
 
 void SourceCamera::setOutputImageOrientation(UIInterfaceOrientation orientation) {
