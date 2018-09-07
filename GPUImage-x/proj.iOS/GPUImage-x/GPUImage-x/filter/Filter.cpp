@@ -277,10 +277,19 @@ void Filter::update(float frameTime) {
         _framebuffer = Context::getInstance()->getFramebufferCache()->fetchFramebuffer(rotatedFramebufferWidth, rotatedFramebufferHeight);
         proceed();
     }
-
+    
+    if (_frameProcessingCompletionBlock) {
+        _frameProcessingCompletionBlock(frameTime);
+    }
+    
     _framebuffer->release();
     _framebuffer = 0;
 }
+
+void Filter::setFrameProcessingCompletionCallback(std::function<void(float&)> callback) {
+    _frameProcessingCompletionBlock = callback;
+}
+
 
 bool Filter::registerProperty(const std::string& name, int defaultValue, const std::string& comment/* = ""*/, std::function<void(int&)> setCallback/* = 0*/) {
     if (hasProperty(name)) return false;

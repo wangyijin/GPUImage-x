@@ -74,6 +74,9 @@ public:
     GLProgram* getProgram() const { return _filterProgram; };
 
     // property setters & getters
+    
+    void setFrameProcessingCompletionCallback(std::function<void(float&)> callback);
+    
     bool registerProperty(const std::string& name, int defaultValue, const std::string& comment = "", std::function<void(int&)> setCallback = 0);
     bool registerProperty(const std::string& name, float defaultValue, const std::string& comment = "", std::function<void(float&)> setCallback = 0);
     bool registerProperty(const std::string& name, const std::string& defaultValue, const std::string& comment = "", std::function<void(std::string&)> setCallback = 0);
@@ -104,6 +107,9 @@ public:
 protected:
     GLProgram* _filterProgram;
     GLuint _filterPositionAttribute;
+    
+    std::function<void(float&)> _frameProcessingCompletionBlock;
+    
     std::string _filterClassName;
     struct {
         float r; float g; float b; float a;
@@ -137,6 +143,7 @@ protected:
         std::function<void(std::string&)> setCallback;
     };
     std::map<std::string, StringProperty> _stringProperties;
+    
 
 private:
     static std::map<std::string, std::function<Filter*()>> _filterFactories;
