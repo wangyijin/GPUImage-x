@@ -38,8 +38,9 @@ public:
     static SourceCamera* create();
 
     void setFrameData(int width, int height, const void* pixels, RotationMode outputRotation = RotationMode::NoRotation);
-#if PLATFORM == PLATFORM_IOS    
+#if PLATFORM == PLATFORM_IOS
     bool init();
+    bool init(AVCaptureSessionPreset preset);
     bool init(NSString* sessionPreset, AVCaptureDevicePosition cameraPosition);
     static bool isCameraExist(AVCaptureDevicePosition cameraPosition);
     void start();

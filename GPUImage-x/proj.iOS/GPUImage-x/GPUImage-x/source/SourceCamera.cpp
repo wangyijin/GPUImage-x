@@ -65,8 +65,13 @@ void SourceCamera::setFrameData(int width, int height, const void* pixels, Rotat
 }
 
 #if PLATFORM == PLATFORM_IOS
+
 bool SourceCamera::init() {
-    return init(AVCaptureSessionPreset640x480, AVCaptureDevicePositionBack);
+    return init(AVCaptureSessionPreset1920x1080);
+};
+
+bool SourceCamera::init(AVCaptureSessionPreset preset) {
+    return init(preset, AVCaptureDevicePositionBack);
 }
 
 bool SourceCamera::init(NSString* sessionPreset, AVCaptureDevicePosition cameraPosition) {
