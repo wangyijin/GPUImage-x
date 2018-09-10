@@ -29,7 +29,7 @@ class BilateralMonoFilter : public Filter {
 public:
     enum Type {HORIZONTAL, VERTICAL};
     
-    static BilateralMonoFilter* create(Type type = HORIZONTAL);
+    static BilateralMonoFilter* create(Type type = VERTICAL);
     bool init();
     
     virtual bool proceed(bool bUpdateTargets = true) override;

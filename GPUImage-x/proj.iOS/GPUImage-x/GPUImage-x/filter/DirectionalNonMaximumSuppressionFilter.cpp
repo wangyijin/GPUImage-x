@@ -67,7 +67,7 @@ bool DirectionalNonMaximumSuppressionFilter::init() {
         _texelWidthUniform = _filterProgram->getUniformLocation("texelWidth");
         _texelHeightUniform = _filterProgram->getUniformLocation("texelWidth");
         
-        _filterProgram->setUniformValue("upperThreshold", (float)0.5);
+        _filterProgram->setUniformValue("upperThreshold", (float)0.4);
         _filterProgram->setUniformValue("lowerThreshold", (float)0.1);
         
         return true;

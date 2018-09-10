@@ -90,5 +90,33 @@ bool CannyEdgeDetectionFilter::init() {
     return true;
 }
 
+/**
+ Getters and setters for various filter props
+ */
+/*
+int CannyEdgeDetectionFilter::getBlurRadiusInPixels() {
+    return _blurFilter->getRadius();
+}
+void CannyEdgeDetectionFilter::setBlurRadiusInPixels(int newValue) {
+    _blurFilter->setRadius(newValue);
+}
+
+float CannyEdgeDetectionFilter::getBlurTexelSpacingMultiplier() {
+    return _edgeDetectionFilter->_texelSizeMultiplier
+}
+void CannyEdgeDetectionFilter::setBlurTexelSpacingMultiplier(float newValue);
+
+float CannyEdgeDetectionFilter::getTexelWidth();
+void CannyEdgeDetectionFilter::setTexelWidth(float newValue);
+
+float CannyEdgeDetectionFilter::getTexelHeight();
+void CannyEdgeDetectionFilter::setTexelHeight(float newValue);
+
+float CannyEdgeDetectionFilter::getUpperThreshold();
+void CannyEdgeDetectionFilter::setUpperThreshold(float newValue);
+
+float CannyEdgeDetectionFilter::getLowerThreshold();
+void CannyEdgeDetectionFilter::setLowerThreshold(float newValue);
+*/
 
 NS_GI_END

@@ -29,7 +29,7 @@ class GaussianBlurFilter : public FilterGroup {
 public:
     virtual ~GaussianBlurFilter();
     
-    static GaussianBlurFilter* create(int radius = 4, float sigma = 2.0);
+    static GaussianBlurFilter* create(int radius = 2, float sigma = 2.0);
     bool init(int radius, float sigma);
     void setRadius(int radius);
     void setSigma(float sigma);

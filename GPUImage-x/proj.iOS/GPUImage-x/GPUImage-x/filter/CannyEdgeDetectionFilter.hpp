@@ -33,7 +33,25 @@ class CannyEdgeDetectionFilter : public FilterGroup {
 public:
     static CannyEdgeDetectionFilter* create();
     bool init();
+    /*
+    float getBlurRadiusInPixels();
+    void setBlurRadiusInPixels(float newValue);
     
+    float getBlurTexelSpacingMultiplier();
+    void setBlurTexelSpacingMultiplier(float newValue);
+    
+    float getTexelWidth();
+    void setTexelWidth(float newValue);
+    
+    float getTexelHeight();
+    void setTexelHeight(float newValue);
+    
+    float getUpperThreshold();
+    void setUpperThreshold(float newValue);
+    
+    float getLowerThreshold();
+    void setLowerThreshold(float newValue);
+    */
 protected:
     CannyEdgeDetectionFilter();
     ~CannyEdgeDetectionFilter();

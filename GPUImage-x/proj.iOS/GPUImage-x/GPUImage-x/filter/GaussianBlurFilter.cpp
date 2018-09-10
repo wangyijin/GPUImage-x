@@ -62,7 +62,7 @@ bool GaussianBlurFilter::init(int radius, float sigma) {
     _hBlurFilter->addTarget(_vBlurFilter);
     addFilter(_hBlurFilter);
     
-    registerProperty("radius", 4, "", [this](int& radius){
+    registerProperty("radius", 2, "", [this](int& radius){
         setRadius(radius);
     });
     

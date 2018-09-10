@@ -27,6 +27,8 @@ REGISTER_FILTER_CLASS(SingleComponentGaussianBlurFilter)
 SingleComponentGaussianBlurFilter::SingleComponentGaussianBlurFilter()
 :_hBlurFilter(0)
 ,_vBlurFilter(0)
+,_radius(4)
+,_sigma(2.0)
 {
 }
 
@@ -62,10 +64,12 @@ bool SingleComponentGaussianBlurFilter::init(int radius, float sigma) {
     _hBlurFilter->addTarget(_vBlurFilter);
     addFilter(_hBlurFilter);
     
-    registerProperty("radius", 4, "", [this](int& radius){
+    _radius = radius;
+    registerProperty("radius", 2, "", [this](int& radius){
         setRadius(radius);
     });
     
+    _sigma = sigma;
     registerProperty("sigma", 2.0, "", [this](float& sigma){
         setSigma(sigma);
     });
@@ -73,12 +77,22 @@ bool SingleComponentGaussianBlurFilter::init(int radius, float sigma) {
     return true;
 }
 
+int SingleComponentGaussianBlurFilter::getRadius() {
+    return _radius;
+}
+
 void SingleComponentGaussianBlurFilter::setRadius(int radius) {
+    _radius = radius;
     _hBlurFilter->setRadius(radius);
     _vBlurFilter->setRadius(radius);
 }
 
+float SingleComponentGaussianBlurFilter::getSigma() {
+    return _sigma;
+}
+
 void SingleComponentGaussianBlurFilter::setSigma(float sigma) {
+    _sigma = sigma;
     _hBlurFilter->setSigma(sigma);
     _vBlurFilter->setSigma(sigma);
 }

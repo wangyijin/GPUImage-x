@@ -47,6 +47,10 @@ bool GaussianBlurMonoFilter::init(int radius, float sigma) {
     return false;
 }
 
+int GaussianBlurMonoFilter::getRadius() {
+    return _radius;
+}
+
 void GaussianBlurMonoFilter::setRadius(int radius) {
     if (radius == _radius) return;
     
@@ -57,6 +61,10 @@ void GaussianBlurMonoFilter::setRadius(int radius) {
         _filterProgram = 0;
     }
     initWithShaderString(_generateOptimizedVertexShaderString(_radius, _sigma), _generateOptimizedFragmentShaderString(_radius, _sigma));
+}
+
+float GaussianBlurMonoFilter::getSigma() {
+    return _sigma;
 }
 
 void GaussianBlurMonoFilter::setSigma(float sigma) {
