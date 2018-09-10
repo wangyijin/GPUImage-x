@@ -205,6 +205,12 @@ void FilterGroup::setInputFramebuffer(Framebuffer* framebuffer, RotationMode rot
     }
 }
 
+void FilterGroup::forceProcessingAtSize(int width, int height) {
+    for(auto& filter : _filters){
+        filter->forceProcessingAtSize(width, height);
+    }
+}
+
 bool FilterGroup::isPrepared() const {
 //    for (auto& filter : _filters) {
 //        if (!filter->isPrepared())

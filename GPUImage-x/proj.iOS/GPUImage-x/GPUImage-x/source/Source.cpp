@@ -30,7 +30,6 @@ NS_GI_BEGIN
 Source::Source()
 :_framebuffer(0)
 ,_outputRotation(RotationMode::NoRotation)
-,_framebufferScale(1.0)
 {
     
 }
@@ -139,6 +138,17 @@ unsigned char* Source::captureAProcessedFrameData(Filter* upToFilter, int width/
     Context::getInstance()->isCapturingFrame = false;
     
     return processedFrameData;
+}
+
+void Source::forceProcessingAtSize(int width, int height) {
+    
+}
+
+void Source::setFramebufferScale(float framebufferScale) {
+    float width = _framebuffer->getWidth();
+    float height = _framebuffer->getHeight();
+    
+    forceProcessingAtSize(framebufferScale * width, framebufferScale * height);
 }
 
 void Source::setFramebuffer(Framebuffer* fb, RotationMode outputRotation/* = RotationMode::NoRotation*/) {

@@ -50,7 +50,9 @@ public:
     virtual Framebuffer* getFramebuffer() const;
     virtual void releaseFramebuffer(bool returnToCache = true);
     
-    void setFramebufferScale(float framebufferScale) { _framebufferScale = framebufferScale; }
+    virtual void forceProcessingAtSize(int width, int height);
+    virtual void setFramebufferScale(float framebufferScale);
+    
     int getRotatedFramebufferWidth() const;
     int getRotatedFramebufferHeight() const;
     
@@ -63,7 +65,6 @@ protected:
     Framebuffer* _framebuffer;
     RotationMode _outputRotation;
     std::map<Target*, int> _targets;
-    float _framebufferScale;
 };
 
 

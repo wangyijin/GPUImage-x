@@ -71,6 +71,8 @@ public:
     
     virtual void update(float frameTime) override;
     virtual bool proceed(bool bUpdateTargets = true) override;
+    virtual void forceProcessingAtSize(int width, int height) override;
+    
     GLProgram* getProgram() const { return _filterProgram; };
 
     // property setters & getters
@@ -107,6 +109,9 @@ public:
 protected:
     GLProgram* _filterProgram;
     GLuint _filterPositionAttribute;
+    
+    bool _overrideInputSize = false;
+    int _forcedMaximumWidth, _forcedMaximumHeight;
     
     std::function<void(float&)> _frameProcessingCompletionBlock;
     

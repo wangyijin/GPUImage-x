@@ -50,6 +50,7 @@ public:
 //#if GI_TARGET_PLATFORM == GI_PLATFORM_IOS
 //    virtual Source* addTarget(id<GPUImageTarget> target) override;
 //#endif
+    virtual void forceProcessingAtSize(int width, int height) override;
     virtual void removeTarget(Target* target) override;
     virtual void removeAllTargets() override;
     virtual bool hasTarget(const Target* target) const override;

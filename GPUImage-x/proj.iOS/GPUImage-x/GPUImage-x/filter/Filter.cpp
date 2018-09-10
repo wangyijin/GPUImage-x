@@ -263,15 +263,13 @@ void Filter::update(float frameTime) {
 
         int rotatedFramebufferWidth = firstInputFramebuffer->getWidth();
         int rotatedFramebufferHeight = firstInputFramebuffer->getHeight();
-        if (rotationSwapsSize(firstInputRotation))
-        {
+        
+        if (_overrideInputSize) {
+            rotatedFramebufferWidth = _forcedMaximumWidth;
+            rotatedFramebufferHeight = _forcedMaximumHeight;
+        } else if (rotationSwapsSize(firstInputRotation)) {
             rotatedFramebufferWidth = firstInputFramebuffer->getHeight();
             rotatedFramebufferHeight = firstInputFramebuffer->getWidth();
-        }
-
-        if (_framebufferScale !=  1.0) {
-            rotatedFramebufferWidth = int(rotatedFramebufferWidth * _framebufferScale);
-            rotatedFramebufferHeight = int(rotatedFramebufferHeight * _framebufferScale);
         }
 
         _framebuffer = Context::getInstance()->getFramebufferCache()->fetchFramebuffer(rotatedFramebufferWidth, rotatedFramebufferHeight);
@@ -290,6 +288,16 @@ void Filter::setFrameProcessingCompletionCallback(std::function<void(float&)> ca
     _frameProcessingCompletionBlock = callback;
 }
 
+void Filter::forceProcessingAtSize(int width, int height) {
+    if (width == 0 || height == 0) {
+        _overrideInputSize = false;
+        return;
+    }
+    
+    _overrideInputSize = true;
+    _forcedMaximumWidth = width;
+    _forcedMaximumHeight = height;
+}
 
 bool Filter::registerProperty(const std::string& name, int defaultValue, const std::string& comment/* = ""*/, std::function<void(int&)> setCallback/* = 0*/) {
     if (hasProperty(name)) return false;
