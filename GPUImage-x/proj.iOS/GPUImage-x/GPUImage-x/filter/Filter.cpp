@@ -130,9 +130,12 @@ bool Filter::proceed(bool bUpdateTargets/* = true*/) {
     };
 
     Context::getInstance()->setActiveShaderProgram(_filterProgram);
+    
     _framebuffer->active();
+    
     CHECK_GL(glClearColor(_backgroundColor.r, _backgroundColor.g, _backgroundColor.b, _backgroundColor.a));
     CHECK_GL(glClear(GL_COLOR_BUFFER_BIT));
+    
     for (std::map<int, InputFrameBufferInfo>::const_iterator it = _inputFramebuffers.begin(); it != _inputFramebuffers.end(); ++it) {
         int texIdx = it->first;
         Framebuffer* fb = it->second.frameBuffer;
@@ -146,6 +149,7 @@ bool Filter::proceed(bool bUpdateTargets/* = true*/) {
         CHECK_GL(glEnableVertexAttribArray(filterTexCoordAttribute));
         CHECK_GL(glVertexAttribPointer(filterTexCoordAttribute, 2, GL_FLOAT, 0, 0, _getTexureCoordinate(it->second.rotationMode)));
     }
+    
     CHECK_GL(glVertexAttribPointer(_filterPositionAttribute, 2, GL_FLOAT, 0, 0, imageVertices));
     CHECK_GL(glDrawArrays(GL_TRIANGLE_STRIP, 0, 4));
 
