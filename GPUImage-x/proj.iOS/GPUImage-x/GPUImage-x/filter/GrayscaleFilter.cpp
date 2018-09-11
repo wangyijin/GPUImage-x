@@ -33,7 +33,8 @@ const std::string kGrayscaleFragmentShaderString = SHADER_STRING
  void main()
  {
      lowp vec4 color = texture2D(colorMap, vTexCoord);
-     float luminance = dot(color.rgb, vec3(0.2125, 0.7154, 0.0721));
+     float luminance = dot(color.rgb, W);
+     
      gl_FragColor = vec4(vec3(luminance), color.a);
  }
 );
