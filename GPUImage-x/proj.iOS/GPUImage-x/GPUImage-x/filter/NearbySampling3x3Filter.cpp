@@ -65,7 +65,7 @@ const std::string kNearbySampling3x3SamplingVertexShaderString = SHADER_STRING
      vBottomLeftTexCoord = texCoord.xy - widthNegativeHeightStep;
      vBottomRightTexCoord = texCoord.xy + widthHeightStep;
  }
- );
+);
 
 
 bool NearbySampling3x3Filter::initWithFragmentShaderString(const std::string& fragmentShaderSource, int inputNumber/* = 1*/) {
