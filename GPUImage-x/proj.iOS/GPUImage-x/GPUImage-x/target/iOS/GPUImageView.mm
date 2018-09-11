@@ -72,6 +72,7 @@
     self.opaque = YES;
     self.hidden = NO;
     CAEAGLLayer* eaglLayer = (CAEAGLLayer*)self.layer;
+    eaglLayer.contentsScale = [[UIScreen mainScreen] scale];
     eaglLayer.opaque = YES;
     eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
     
