@@ -86,6 +86,8 @@ bool CannyEdgeDetectionFilter::init() {
     
     _grayscaleFilter->addTarget(_blurFilter)->addTarget(_edgeDetectionFilter)->addTarget(_nonMaximumSuppressionFilter)->addTarget(_weakPixelInclusionFilter);
     addFilter(_grayscaleFilter);
+    
+    setTerminalFilter(_weakPixelInclusionFilter);
 
     return true;
 }
