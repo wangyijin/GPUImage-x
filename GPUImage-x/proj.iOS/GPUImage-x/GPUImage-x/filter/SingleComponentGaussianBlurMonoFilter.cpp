@@ -45,8 +45,9 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedVertexShade
     }
     
     // 1. generate the normal Gaussian weights for a given sigma
-    float* standardGaussianWeights = new float[radius + 1];
-    float sumOfWeights = 0.0;
+    GLfloat* standardGaussianWeights = new GLfloat[radius + 1];
+    GLfloat sumOfWeights = 0.0;
+    
     for (int i = 0; i < radius + 1; ++i)
     {
         standardGaussianWeights[i] = (1.0 / sqrt(2.0 * M_PI * pow(sigma, 2.0))) * exp(-pow(i, 2.0) / (2.0 * pow(sigma, 2.0)));
@@ -63,8 +64,8 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedVertexShade
     }
     
     // 3. From these weights we calculate the offsets to read interpolated values from
-    int numberOfOptimizedOffsets = fmin(radius / 2 + (radius % 2), 7);
-    float* optimizedGaussianOffsets = new float[numberOfOptimizedOffsets];
+    int numberOfOptimizedOffsets = MIN(radius / 2 + (radius % 2), 7);
+    GLfloat* optimizedGaussianOffsets = new GLfloat[numberOfOptimizedOffsets];
     
     for (int i = 0; i < numberOfOptimizedOffsets; ++i)
     {
@@ -116,8 +117,8 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
     }
     
     // 1. generate the normal Gaussian weights for a given sigma
-    float* standardGaussianWeights = new float[radius + 1];
-    float sumOfWeights = 0.0;
+    GLfloat* standardGaussianWeights = new float[radius + 1];
+    GLfloat sumOfWeights = 0.0;
     for (int i = 0; i < radius + 1; ++i)
     {
         standardGaussianWeights[i] = (1.0 / sqrt(2.0 * M_PI * pow(sigma, 2.0))) * exp(-pow(i, 2.0) / (2.0 * pow(sigma, 2.0)));
@@ -135,7 +136,7 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
     
     // 3. From these weights we calculate the offsets to read interpolated values from
     int trueNumberOfOptimizedOffsets = radius / 2 + (radius % 2);
-    int numberOfOptimizedOffsets = fmin(trueNumberOfOptimizedOffsets, 7);
+    int numberOfOptimizedOffsets = MIN(trueNumberOfOptimizedOffsets, 7);
 
     std::string shaderStr =
     str_format("\
@@ -149,9 +150,9 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
     
     shaderStr += str_format("sum += texture2D(colorMap, blurCoordinates[0]).r * %f;\n", standardGaussianWeights[0]);
     for (int i = 0; i < numberOfOptimizedOffsets; ++i) {
-        float firstWeight = standardGaussianWeights[i * 2 + 1];
-        float secondWeight = standardGaussianWeights[i * 2 + 2];
-        float optimizedWeight = firstWeight + secondWeight;
+        GLfloat firstWeight = standardGaussianWeights[i * 2 + 1];
+        GLfloat secondWeight = standardGaussianWeights[i * 2 + 2];
+        GLfloat optimizedWeight = firstWeight + secondWeight;
         
         shaderStr += str_format("sum += texture2D(colorMap, blurCoordinates[%d]).r * %f;\n", i * 2 + 1, optimizedWeight);
         shaderStr += str_format("sum += texture2D(colorMap, blurCoordinates[%d]).r * %f;\n", i * 2 + 2, optimizedWeight);
@@ -164,11 +165,11 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
         
         for (int i = numberOfOptimizedOffsets; i < trueNumberOfOptimizedOffsets; i++)
         {
-            float firstWeight = standardGaussianWeights[i * 2 + 1];
-            float secondWeight = standardGaussianWeights[i * 2 + 2];
+            GLfloat firstWeight = standardGaussianWeights[i * 2 + 1];
+            GLfloat secondWeight = standardGaussianWeights[i * 2 + 2];
             
-            float optimizedWeight = firstWeight + secondWeight;
-            float optimizedOffset = (firstWeight * (i * 2 + 1) + secondWeight * (i * 2 + 2)) / optimizedWeight;
+            GLfloat optimizedWeight = firstWeight + secondWeight;
+            GLfloat optimizedOffset = (firstWeight * (i * 2 + 1) + secondWeight * (i * 2 + 2)) / optimizedWeight;
             
             shaderStr += str_format("sum += texture2D(colorMap, blurCoordinates[0] + texelSpacing * %f).r * %f;\n", optimizedOffset, optimizedWeight);
             

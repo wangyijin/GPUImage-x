@@ -28,7 +28,7 @@ class GaussianBlurMonoFilter : public Filter {
 public:
     enum Type {HORIZONTAL, VERTICAL};
     
-    static GaussianBlurMonoFilter* create(Type type = VERTICAL, int radius = 2, float sigma = 2.0);
+    static GaussianBlurMonoFilter* create(Type type = VERTICAL, int radius = 4, float sigma = 2.0);
     bool init(int radius, float sigma);
     
     int getRadius();

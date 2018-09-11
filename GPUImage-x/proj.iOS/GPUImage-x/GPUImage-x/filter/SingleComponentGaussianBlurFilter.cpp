@@ -53,7 +53,6 @@ SingleComponentGaussianBlurFilter* SingleComponentGaussianBlurFilter::create(int
     }
     return ret;
 }
-
 bool SingleComponentGaussianBlurFilter::init(int radius, float sigma) {
     if (!FilterGroup::init()) {
         return false;
@@ -61,11 +60,12 @@ bool SingleComponentGaussianBlurFilter::init(int radius, float sigma) {
     
     _hBlurFilter = SingleComponentGaussianBlurMonoFilter::create(SingleComponentGaussianBlurMonoFilter::HORIZONTAL, radius, sigma);
     _vBlurFilter = SingleComponentGaussianBlurMonoFilter::create(SingleComponentGaussianBlurMonoFilter::VERTICAL, radius, sigma);
-    _hBlurFilter->addTarget(_vBlurFilter);
     addFilter(_hBlurFilter);
+    _hBlurFilter->addTarget(_vBlurFilter);
+    setTerminalFilter(_vBlurFilter);
     
     _radius = radius;
-    registerProperty("radius", 2, "", [this](int& radius){
+    registerProperty("radius", 4, "", [this](int& radius){
         setRadius(radius);
     });
     

@@ -136,9 +136,9 @@ std::string GaussianBlurMonoFilter::_generateVertexShaderString(int radius, floa
     for (int i = 0; i < radius * 2 + 1; ++i) {
         int offsetFromCenter = i - radius;
         if (offsetFromCenter == 0) {
-            shaderStr = shaderStr + str_format("blurCoordinates[%d] = texCoord.xy;\n", i);
+            shaderStr += str_format("blurCoordinates[%d] = texCoord.xy;\n", i);
         } else {
-            shaderStr = shaderStr + str_format("blurCoordinates[%d] = texCoord.xy + texelSpacing * (%f);\n", i, (float)offsetFromCenter);
+            shaderStr += str_format("blurCoordinates[%d] = texCoord.xy + texelSpacing * (%f);\n", i, (float)offsetFromCenter);
         }
     }
 

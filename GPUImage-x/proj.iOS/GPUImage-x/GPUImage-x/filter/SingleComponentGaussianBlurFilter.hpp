@@ -29,7 +29,7 @@ class SingleComponentGaussianBlurFilter : public FilterGroup {
 public:
     virtual ~SingleComponentGaussianBlurFilter();
     
-    static SingleComponentGaussianBlurFilter* create(int radius = 2, float sigma = 2.0);
+    static SingleComponentGaussianBlurFilter* create(int radius = 4, float sigma = 2.0);
     bool init(int radius, float sigma);
     
     int getRadius();
