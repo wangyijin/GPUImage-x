@@ -65,7 +65,7 @@ DirectionalNonMaximumSuppressionFilter* DirectionalNonMaximumSuppressionFilter::
 bool DirectionalNonMaximumSuppressionFilter::init() {
     if (initWithFragmentShaderString(kDirectionalNonmaximumSuppressionFragmentShaderString)) {
         _texelWidthUniform = _filterProgram->getUniformLocation("texelWidth");
-        _texelHeightUniform = _filterProgram->getUniformLocation("texelWidth");
+        _texelHeightUniform = _filterProgram->getUniformLocation("texelHeight");
         
         _filterProgram->setUniformValue("upperThreshold", (float)0.4);
         _filterProgram->setUniformValue("lowerThreshold", (float)0.1);
