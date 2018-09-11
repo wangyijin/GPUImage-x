@@ -33,7 +33,7 @@ TextureAttributes Framebuffer::defaultTextureAttribures = {
     .wrapS = GL_CLAMP_TO_EDGE,
     .wrapT = GL_CLAMP_TO_EDGE,
     .internalFormat = GL_RGBA,
-    .format = GL_RGBA,
+    .format = GL_BGRA,
     .type = GL_UNSIGNED_BYTE
 };
 
