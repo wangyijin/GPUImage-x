@@ -80,7 +80,6 @@ bool DirectionalNonMaximumSuppressionFilter::proceed(bool bUpdateTargets/* = tru
     float texelWidth = 1.0 / _framebuffer->getWidth();
     float texelHeight = 1.0 / _framebuffer->getHeight();
     
-    Framebuffer* inputFramebuffer = _inputFramebuffers.begin()->second.frameBuffer;
     RotationMode inputRotation = _inputFramebuffers.begin()->second.rotationMode;
     
     if (rotationSwapsSize(inputRotation)){
