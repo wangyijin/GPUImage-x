@@ -147,7 +147,7 @@ std::string SingleComponentGaussianBlurMonoFilter::_generateOptimizedFragmentSha
                {\n\
                lowp float sum = 0.0;\n", numberOfOptimizedOffsets * 2 + 1);
     
-    shaderStr += str_format("gl_FragColor += texture2D(colorMap, blurCoordinates[0]) * %f;\n", standardGaussianWeights[0]);
+    shaderStr += str_format("sum += texture2D(colorMap, blurCoordinates[0]).r * %f;\n", standardGaussianWeights[0]);
     for (int i = 0; i < numberOfOptimizedOffsets; ++i) {
         float firstWeight = standardGaussianWeights[i * 2 + 1];
         float secondWeight = standardGaussianWeights[i * 2 + 2];
