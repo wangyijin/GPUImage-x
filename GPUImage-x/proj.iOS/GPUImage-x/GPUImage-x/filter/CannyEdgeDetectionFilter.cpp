@@ -83,7 +83,6 @@ bool CannyEdgeDetectionFilter::init() {
     // 5. include weak pixels to complete edges
     _weakPixelInclusionFilter = WeakPixelInclusionFilter::create();
     
-    
     _grayscaleFilter->addTarget(_blurFilter)->addTarget(_edgeDetectionFilter)->addTarget(_nonMaximumSuppressionFilter)->addTarget(_weakPixelInclusionFilter);
     addFilter(_grayscaleFilter);
     

@@ -40,8 +40,6 @@ const std::string kConvolution3x3FragmentShaderString = SHADER_STRING
  varying vec2 vBottomLeftTexCoord;
  varying vec2 vBottomRightTexCoord;
  
-
- 
  void main()
  {
      mediump vec3 bottomColor = texture2D(colorMap, vBottomTexCoord).rgb;
