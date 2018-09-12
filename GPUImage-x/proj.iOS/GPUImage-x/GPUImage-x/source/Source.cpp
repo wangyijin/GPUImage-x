@@ -152,13 +152,15 @@ void Source::setFramebufferScale(float framebufferScale) {
 }
 
 void Source::setFramebuffer(Framebuffer* fb, RotationMode outputRotation/* = RotationMode::NoRotation*/) {
-    if (_framebuffer != fb && _framebuffer != 0) {
-        _framebuffer->release();
-        _framebuffer = 0;
+    if (fb != _framebuffer) {
+        if (_framebuffer) {
+            _framebuffer->release();
+            _framebuffer = 0;
+        }
+        _framebuffer = fb;
+        if (_framebuffer)
+            _framebuffer->retain();
     }
-    _framebuffer = fb;
-    if (_framebuffer)
-        _framebuffer->retain();
     _outputRotation = outputRotation;
 }
 
