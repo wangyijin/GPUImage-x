@@ -191,13 +191,13 @@ void FilterGroup::updateTargets(float frameTime) {
 }
 
 void FilterGroup::setFramebuffer(Framebuffer* fb, RotationMode outputRotation/* = RotationMode::NoRotation*/) {
-    //if (_terminalFilter)
-    //    _terminalFilter->setFramebuffer(fb);
+    if (_terminalFilter)
+        _terminalFilter->setFramebuffer(fb);
 }
 
 Framebuffer* FilterGroup::getFramebuffer() const {
-    //if (_terminalFilter)
-    //    return _terminalFilter->getFramebuffer();
+    if (_terminalFilter)
+        return _terminalFilter->getFramebuffer();
     return 0;
 }
 
