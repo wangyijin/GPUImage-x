@@ -120,7 +120,9 @@ void FilterGroup::removeAllFilters() {
 }
 
 Filter* FilterGroup::_predictTerminalFilter(Filter* filter) {
-    if (filter->getTargets().size() == 0)
+    if (!filter)
+        return 0;
+    else if (filter->getTargets().size() == 0)
         return filter;
     else
         return _predictTerminalFilter(dynamic_cast<Filter*>(filter->getTargets().begin()->first));
