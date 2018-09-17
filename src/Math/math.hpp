@@ -20,6 +20,8 @@
 #define math_hpp
 
 #include "macros.h"
+#include "Vector3.hpp"
+#include "Vector4.hpp"
 
 NS_GI_BEGIN
 
@@ -75,10 +77,6 @@ public:
     bool operator>(const Vector2& v) const;
     bool operator==(const Vector2& v) const;
     bool operator!=(const Vector2& v) const;
-};
-
-class Vector3 {
-    
 };
 
 class Matrix4 {

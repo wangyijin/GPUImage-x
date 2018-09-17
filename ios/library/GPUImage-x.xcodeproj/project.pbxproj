@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A71D25321502A8B00ADDA5A /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A71D25121502A8B00ADDA5A /* Vector3.cpp */; };
+		1A71D25621502D1600ADDA5A /* Vector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A71D25521502D1500ADDA5A /* Vector4.cpp */; };
 		3C0F8F041E967FDB007E34AF /* Convolution3x3Filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F8F021E967FDB007E34AF /* Convolution3x3Filter.cpp */; };
 		3C0F8F071E968AF5007E34AF /* EmbossFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C0F8F051E968AF5007E34AF /* EmbossFilter.cpp */; };
 		3C21FAD01E8A9719007DFE11 /* PosterizeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C21FACE1E8A9719007DFE11 /* PosterizeFilter.cpp */; };
@@ -81,6 +83,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A71D25121502A8B00ADDA5A /* Vector3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Vector3.cpp; path = ../../../../src/Math/Vector3.cpp; sourceTree = "<group>"; };
+		1A71D25221502A8B00ADDA5A /* Vector3.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Vector3.hpp; path = ../../../../src/Math/Vector3.hpp; sourceTree = "<group>"; };
+		1A71D25421502D1500ADDA5A /* Vector4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector4.hpp; sourceTree = "<group>"; };
+		1A71D25521502D1500ADDA5A /* Vector4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector4.cpp; sourceTree = "<group>"; };
 		3C0F8F021E967FDB007E34AF /* Convolution3x3Filter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = Convolution3x3Filter.cpp; path = filter/Convolution3x3Filter.cpp; sourceTree = "<group>"; };
 		3C0F8F031E967FDB007E34AF /* Convolution3x3Filter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Convolution3x3Filter.hpp; path = filter/Convolution3x3Filter.hpp; sourceTree = "<group>"; };
 		3C0F8F051E968AF5007E34AF /* EmbossFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = EmbossFilter.cpp; path = filter/EmbossFilter.cpp; sourceTree = "<group>"; };
@@ -209,6 +215,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A71D25021502A7500ADDA5A /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				3C5FF5E71E7055FE00BF0874 /* math.cpp */,
+				3C5FF5E81E7055FE00BF0874 /* math.hpp */,
+				1A71D25121502A8B00ADDA5A /* Vector3.cpp */,
+				1A71D25221502A8B00ADDA5A /* Vector3.hpp */,
+				1A71D25521502D1500ADDA5A /* Vector4.cpp */,
+				1A71D25421502D1500ADDA5A /* Vector4.hpp */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
 		3C50030A1E7ADC58006A49F9 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,8 +392,7 @@
 				3C5FF5E31E7055FE00BF0874 /* GLProgram.cpp */,
 				3C5FF5E41E7055FE00BF0874 /* GLProgram.hpp */,
 				3C5FF5E61E7055FE00BF0874 /* macros.h */,
-				3C5FF5E71E7055FE00BF0874 /* math.cpp */,
-				3C5FF5E81E7055FE00BF0874 /* math.hpp */,
+				1A71D25021502A7500ADDA5A /* Math */,
 				3C5FF5E91E7055FE00BF0874 /* Ref.cpp */,
 				3C5FF5EA1E7055FE00BF0874 /* Ref.hpp */,
 				3C5FF5ED1E7055FE00BF0874 /* util.cpp */,
@@ -470,10 +488,12 @@
 				3C5003121E7ADCCD006A49F9 /* GPUImageView.mm in Sources */,
 				3CA677BC1E88082900295EEC /* RGBFilter.cpp in Sources */,
 				3C5FF5F11E7055FE00BF0874 /* FramebufferCache.cpp in Sources */,
+				1A71D25321502A8B00ADDA5A /* Vector3.cpp in Sources */,
 				3C5FF5F51E7055FE00BF0874 /* Ref.cpp in Sources */,
 				3C938F9F1E74392E00EE753C /* Target.cpp in Sources */,
 				3C0F8F071E968AF5007E34AF /* EmbossFilter.cpp in Sources */,
 				3CAE3C3D1EA8F7D800757974 /* GlassSphereFilter.cpp in Sources */,
+				1A71D25621502D1600ADDA5A /* Vector4.cpp in Sources */,
 				3C938F811E74357C00EE753C /* ColorMatrixFilter.cpp in Sources */,
 				3C938F821E74357C00EE753C /* DirectionalNonMaximumSuppressionFilter.cpp in Sources */,
 				3C5FF5F01E7055FE00BF0874 /* Framebuffer.cpp in Sources */,
@@ -602,6 +622,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
 		};

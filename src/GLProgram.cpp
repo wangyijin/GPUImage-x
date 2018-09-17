@@ -129,6 +129,16 @@ void GLProgram::setUniformValue(const std::string& uniformName, Vector2 value) {
     setUniformValue(getUniformLocation(uniformName), value);
 }
 
+void GLProgram::setUniformValue(const std::string& uniformName, Vector3 value) {
+    Context::getInstance()->setActiveShaderProgram(this);
+    setUniformValue(getUniformLocation(uniformName), value);
+}
+
+void GLProgram::setUniformValue(const std::string& uniformName, Vector4 value) {
+    Context::getInstance()->setActiveShaderProgram(this);
+    setUniformValue(getUniformLocation(uniformName), value);
+}
+
 void GLProgram::setUniformValue(const std::string& uniformName, Matrix3 value) {
     Context::getInstance()->setActiveShaderProgram(this);
     setUniformValue(getUniformLocation(uniformName), value);
@@ -152,6 +162,16 @@ void GLProgram::setUniformValue(int uniformLocation, Matrix4 value) {
 void GLProgram::setUniformValue(int uniformLocation, Vector2 value) {
     Context::getInstance()->setActiveShaderProgram(this);
     CHECK_GL(glUniform2f(uniformLocation, value.x, value.y));
+}
+
+void GLProgram::setUniformValue(int uniformLocation, Vector3 value) {
+    Context::getInstance()->setActiveShaderProgram(this);
+    CHECK_GL(glUniform3f(uniformLocation, value.x, value.y, value.z));
+}
+
+void GLProgram::setUniformValue(int uniformLocation, Vector4 value) {
+    Context::getInstance()->setActiveShaderProgram(this);
+    CHECK_GL(glUniform4f(uniformLocation, value.x, value.y, value.z, value.w));
 }
 
 void GLProgram::setUniformValue(int uniformLocation, Matrix3 value) {
