@@ -21,7 +21,7 @@
 
 #include "../macros.h"
 #include "NearbySampling3x3Filter.hpp"
-#include "../math.hpp"
+#include "math.hpp"
 
 NS_GI_BEGIN
 

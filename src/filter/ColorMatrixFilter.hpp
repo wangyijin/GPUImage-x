@@ -21,7 +21,6 @@
 
 #include "../macros.h"
 #include "Filter.hpp"
-#include "../math.hpp"
 
 NS_GI_BEGIN
 
