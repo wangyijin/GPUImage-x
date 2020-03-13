@@ -1,3 +1,7 @@
+## 招聘
+阿里巴巴供应链平台事业部，团队急招JAVA服务端开发，可内推。
+联系邮箱：jin.wyj@alibaba-inc.com
+
 # GPUImage-x #
 
 <div style="float: right"><img src="https://github.com/wangyijin/raw/blob/master/gpuimage-x/icon/icon_240.jpg" /></div>
@@ -46,7 +50,7 @@ GPUImage::Context::getInstance()->runSync([&]{
 });
 ```
 
-This will filter an image with Gaussian Blur effect. GPUImage-x function calls must be embraced between `GPUImage::Context::getInstance()->runSync([&]{` and `});`, as GPUImage-x code should run in a seperate thread. As you can see, invocation chaining is preferred that will produce concise, elegant, and easy-to-read code. e.g. `sourceImage->addTarget(filter1)->addTarget(filter2)->...->addTarget(filterN)->addTarget(filterView);`
+This will filter an image with Gaussian Blur effect. GPUImage-x function calls must be embraced between `GPUImage::Context::getInstance()->runSync([&]{` and `});`, as GPUImage-x code should run in a seperate thread.
 
 #### Filtering Camera Video
 
