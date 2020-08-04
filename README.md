@@ -1,6 +1,5 @@
 ## 招聘
-杭州阿里巴巴供应链平台事业部，团队急招JAVA服务端开发，可内推。
-联系邮箱：jin.wyj@alibaba-inc.com
+阿里巴巴职位(Java,算法等)内推，联系邮箱：jin.wyj@alibaba-inc.com
 
 # GPUImage-x #
 
