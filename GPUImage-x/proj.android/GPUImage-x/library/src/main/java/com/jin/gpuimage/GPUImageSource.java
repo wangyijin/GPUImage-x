@@ -35,7 +35,7 @@ public abstract class GPUImageSource {
             @Override
             public void run() {
                 if (mNativeClassID != 0)
-                    GPUImage.nativeSourceAddTarget(mNativeClassID, target.getNativeClassID(), texID, target instanceof GPUImageFilter);
+                    GPUImage.nativeSourceAddTarget(mNativeClassID, target.getNativeClassID(), texID, (target instanceof GPUImageFilter || target instanceof GPUImageCropFilter));
             }
         });
         if (target instanceof GPUImageSource)
@@ -49,7 +49,7 @@ public abstract class GPUImageSource {
             @Override
             public void run() {
                 if (mNativeClassID != 0 && target.getNativeClassID() != 0)
-                    GPUImage.nativeSourceRemoveTarget(mNativeClassID, target.getNativeClassID(), target instanceof GPUImageFilter);
+                    GPUImage.nativeSourceRemoveTarget(mNativeClassID, target.getNativeClassID(), (target instanceof GPUImageFilter || target instanceof GPUImageCropFilter));
             }
         });
     }

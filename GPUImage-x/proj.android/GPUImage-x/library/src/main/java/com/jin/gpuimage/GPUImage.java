@@ -19,8 +19,8 @@
 package com.jin.gpuimage;
 
 import android.graphics.Bitmap;
-import android.opengl.GLSurfaceView;
 import android.graphics.PixelFormat;
+import android.opengl.GLSurfaceView;
 import android.os.Build;
 
 public class GPUImage {
@@ -161,6 +161,12 @@ public class GPUImage {
     public static native void nativeFilterSetPropertyInt(long classID, String property, int value);
     public static native void nativeFilterSetPropertyString(long classID, String prooerty, String value);
 
+    // CropFilter
+    public static native long nativeCropFilterCreate(final float left, final float top, final float right, final float bottom);
+    public static native void nativeCropFilterDestroy(long classID);
+    public static native void nativeCropFilterFinalize(long classID);
+    public static native void nativeCropFilterSetCropRegion(long classID, final float left, final float top, final float right, final float bottom);
+
     // SourceImage
     public static native long nativeSourceImageNew();
     public static native void nativeSourceImageDestroy(final long classID);
@@ -172,6 +178,7 @@ public class GPUImage {
     public static native void nativeSourceCameraDestroy(final long classID);
     public static native void nativeSourceCameraFinalize(final long classID);
     public static native void nativeSourceCameraSetFrame(final long classID, final int width, final int height, final int[] data, final int rotation);
+    public static native void nativeSourceCameraSetFrameTexture(final long classID, final int width, final int height, int[] textures, final int rotation);
 
     // Source
     public static native long nativeSourceAddTarget(final long classID, final long targetClassID, final int texID, final boolean isFilter);
@@ -187,6 +194,12 @@ public class GPUImage {
     public static native void nativeTargetViewFinalize(final long classID);
     public static native void nativeTargetViewOnSizeChanged(final long classID, final int width, final int height);
     public static native void nativeTargetViewSetFillMode(final long classID, final int fillMode);
+
+    // Target
+    public static native long nativeTargetRawDataOutputNew(final int width, final int height, final boolean resultsInBGRAFormat);
+    public static native void nativeTargetRawDataOutputFinalize(final long classID);
+    public static native void nativeTargetRawDataOutputNewFrameAvailableCallback(final long classID, final Object callback);
+
     // context
     public static native void nativeContextInit();
     public static native void nativeContextDestroy();

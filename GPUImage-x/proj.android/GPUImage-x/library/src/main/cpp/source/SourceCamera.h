@@ -21,6 +21,7 @@
 
 
 #include "Source.hpp"
+#include "../GLProgram.hpp"
 
 #if PLATFORM == PLATFORM_IOS
 #import <AVFoundation/AVFoundation.h>
@@ -55,6 +56,10 @@ public:
     void setHorizontallyMirrorRearFacingCamera(bool newValue);
 #endif
 
+#if PLATFORM == PLATFORM_ANDROID
+        void setFrameTexture(int width, int height, GLuint *textures, RotationMode outputRotation = RotationMode::NoRotation);
+#endif
+
 private:
 #if PLATFORM == PLATFORM_IOS
     VideoDataOutputSampleBufferDelegate* _videoDataOutputSampleBufferDelegate;
@@ -69,6 +74,13 @@ private:
     /// These properties determine whether or not the two camera orientations should be mirrored. By default, both are NO.
     bool _horizontallyMirrorFrontFacingCamera, _horizontallyMirrorRearFacingCamera;
     void _updateOutputRotation();
+#endif
+
+#if PLATFORM == PLATFORM_ANDROID
+        GLProgram* _displayProgram;
+        GLint _positionAttribute;
+        GLint _textureCoordinateAttribute;
+        GLint _inputTextureUniform;
 #endif
 };
 

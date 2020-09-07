@@ -4,11 +4,35 @@ apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
+
+    buildTypes{
+        debug{
+            jniDebuggable true
+            jniDebuggable = true
+        }
+    }
+
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
+        externalNativeBuild {
+
+            // For ndk-build, instead use ndkBuild {}
+            cmake {
+
+                // Passes optional arguments to CMake.
+                arguments "-DANDROID_ARM_NEON=TRUE", "-DANDROID_TOOLCHAIN=clang"
+
+                // Sets optional flags for the C compiler.
+                cFlags "-g", "-O0"
+
+                // Sets a flag to enable format macro constants for the C++ compiler.
+                cppFlags "-D__STDC_FORMAT_MACROS"
+            }
+        }
     }
 //    buildTypes {
 //        release {

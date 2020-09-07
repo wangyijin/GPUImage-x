@@ -143,6 +143,7 @@ bool Filter::proceed(bool bUpdateTargets/* = true*/) {
                                         texIdx);
         // texcoord attribute
         GLuint filterTexCoordAttribute = _filterProgram->getAttribLocation(texIdx == 0 ? "texCoord" : str_format("texCoord%d", texIdx));
+        
         CHECK_GL(glEnableVertexAttribArray(filterTexCoordAttribute));
         CHECK_GL(glVertexAttribPointer(filterTexCoordAttribute, 2, GL_FLOAT, 0, 0, _getTexureCoordinate(it->second.rotationMode)));
     }

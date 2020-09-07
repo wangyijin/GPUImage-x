@@ -18,8 +18,6 @@
 
 #include "TargetView.h"
 #include "../Context.hpp"
-#include "../util.h"
-#include "../filter/Filter.hpp"
 
 USING_NS_GI
 

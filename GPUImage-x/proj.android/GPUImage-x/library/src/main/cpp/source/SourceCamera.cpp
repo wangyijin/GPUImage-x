@@ -16,11 +16,38 @@
  * limitations under the License.
  */
 
+#include <cmath>
 #include "SourceCamera.h"
 #include "../Context.hpp"
 #include "../util.h"
 
 USING_NS_GI
+
+const std::string kOESFragmentShader = ""
+        "#extension GL_OES_EGL_image_external : require\n"
+        "varying highp vec2 vTexCoordOES;"
+        "uniform samplerExternalOES colorMapOES;\n"
+        "void main()"
+        "{"
+        "   gl_FragColor = texture2D(colorMapOES, vTexCoordOES);"
+        "}";
+
+const std::string kOESVertexShader = SHADER_STRING
+(
+        attribute vec4 position;
+        attribute vec4 texCoordOES;
+
+        uniform mat4 textureTransform;
+        varying vec2 vTexCoordOES;
+
+        void main()
+        {
+            vTexCoordOES = texCoordOES.xy;
+            gl_Position = position;
+        }
+);
+
+
 
 SourceCamera::SourceCamera() {
 #if PLATFORM == PLATFORM_IOS
@@ -30,12 +57,29 @@ SourceCamera::SourceCamera() {
     _horizontallyMirrorFrontFacingCamera = false;
     _horizontallyMirrorRearFacingCamera = false;
 #endif
+
+#if PLATFORM == PLATFORM_ANDROID
+    _displayProgram = GLProgram::createByShaderString(kOESVertexShader, kOESFragmentShader);
+    _positionAttribute = _displayProgram->getAttribLocation("position");
+    _textureCoordinateAttribute = _displayProgram->getAttribLocation("texCoordOES");
+    _inputTextureUniform = _displayProgram->getUniformLocation("colorMapOES");
+    Context::getInstance()->setActiveShaderProgram(_displayProgram);
+    CHECK_GL(glEnableVertexAttribArray(_positionAttribute));
+    CHECK_GL(glEnableVertexAttribArray(_textureCoordinateAttribute));
+#endif
 }
 
 SourceCamera::~SourceCamera() {
 #if PLATFORM == PLATFORM_IOS
     stop();
     _videoDataOutputSampleBufferDelegate = 0;
+#endif
+
+#if PLATFORM == PLATFORM_ANDROID
+    if (_displayProgram) {
+        delete _displayProgram;
+        _displayProgram = 0;
+    }
 #endif
 }
 
@@ -63,6 +107,55 @@ void SourceCamera::setFrameData(int width, int height, const void* pixels, Rotat
 #endif
     CHECK_GL(glBindTexture(GL_TEXTURE_2D, 0));
 }
+
+#if PLATFORM == PLATFORM_ANDROID
+
+void SourceCamera::setFrameTexture(int width, int height, GLuint *textures,
+                                   RotationMode outputRotation) {
+    this->setFramebuffer(0);
+    Framebuffer* framebuffer = Context::getInstance()->getFramebufferCache()->fetchFramebuffer(width, height, false);
+    this->setFramebuffer(framebuffer,outputRotation);
+    framebuffer->release();
+
+    static const GLfloat squareVertices[] = {
+            -1.0f, 1.0f,
+            -1.0f, -1.0f,
+            1.0f, 1.0f,
+            1.0f, -1.0f,
+    };
+
+    static const GLfloat textureCoordinates[] = {
+            0.0f, 1.0f,
+            0.0f, 0.0f,
+            1.0f, 1.0f,
+            1.0f, 0.0f,
+    };
+
+    _framebuffer->active();
+
+    Context::getInstance()->setActiveShaderProgram(_displayProgram);
+    CHECK_GL(glClearColor(0.0f, 0.0f, 0.0f, 0.0f));
+    CHECK_GL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+
+    CHECK_GL(glVertexAttribPointer(_positionAttribute, 2, GL_FLOAT, GL_FALSE, 0, squareVertices));
+    CHECK_GL(glVertexAttribPointer(_textureCoordinateAttribute, 2, GL_FLOAT, GL_FALSE, 0, textureCoordinates));
+    CHECK_GL(glEnableVertexAttribArray(_positionAttribute));
+    CHECK_GL(glEnableVertexAttribArray(_textureCoordinateAttribute));
+
+    CHECK_GL(glActiveTexture(GL_TEXTURE30));
+    CHECK_GL(glBindTexture(GL_TEXTURE_EXTERNAL_OES, textures[0]));
+    CHECK_GL(glUniform1i(_inputTextureUniform, 30));
+
+    CHECK_GL(glDrawArrays(GL_TRIANGLE_STRIP, 0, 4));
+//    CHECK_GL(glDisableVertexAttribArray(_positionAttribute));
+//    CHECK_GL(glDisableVertexAttribArray(_textureCoordinateAttribute));
+
+    CHECK_GL(glBindTexture(GL_TEXTURE_EXTERNAL_OES, 0));
+    _framebuffer->inactive();
+
+}
+#endif
+
 
 #if PLATFORM == PLATFORM_IOS
 bool SourceCamera::init() {

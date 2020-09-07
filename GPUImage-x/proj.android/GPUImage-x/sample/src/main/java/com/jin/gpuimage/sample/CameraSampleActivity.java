@@ -20,14 +20,18 @@ package com.jin.gpuimage.sample;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.RectF;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Toast;
 import com.jin.gpuimage.GPUImage;
+import com.jin.gpuimage.GPUImageCropFilter;
 import com.jin.gpuimage.GPUImageFilter;
+import com.jin.gpuimage.GPUImageRawDataOutput;
 import com.jin.gpuimage.GPUImageSource;
 import com.jin.gpuimage.GPUImageSourceCamera;
 import com.jin.gpuimage.GPUImageView;
@@ -35,10 +39,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-public class CameraSampleActivity extends Activity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, FilterHelper.OnFilterSelectedListener {
+public class CameraSampleActivity extends Activity implements View.OnClickListener,
+        SeekBar.OnSeekBarChangeListener,
+        FilterHelper.OnFilterSelectedListener,
+        GPUImageRawDataOutput.NewFrameAvailableCallback {
 
     private GPUImageSourceCamera sourceCamera;
     private GPUImageFilter filter;
+    private GPUImageRawDataOutput rawDataOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +63,18 @@ public class CameraSampleActivity extends Activity implements View.OnClickListen
 
         sourceCamera = new GPUImageSourceCamera(CameraSampleActivity.this);
         filter = GPUImageFilter.create("BrightnessFilter");
-        sourceCamera.addTarget(filter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+        rawDataOutput = GPUImageRawDataOutput.create(320, 240, Boolean.FALSE);
+
+        rawDataOutput.setNewFrameAvailableCallback(this);
+
+
+        GPUImageView view =(GPUImageView) findViewById(R.id.gpuimagexview);
+        view.setFillMode(0);
+        GPUImageCropFilter cropFilter = GPUImageCropFilter.create(new RectF(0.0f, 0.21875f, 1.0f, 0.5625f));
+        sourceCamera.addTarget(cropFilter).addTarget(filter);
+        filter.addTarget(view);
+        filter.addTarget(rawDataOutput);
+
         GPUImage.getInstance().setSource(sourceCamera);
 
     }
@@ -112,8 +131,14 @@ public class CameraSampleActivity extends Activity implements View.OnClickListen
     @Override
     public void OnFilterSelected(GPUImageFilter newFilter) {
         sourceCamera.removeTarget(filter);
+        filter.removeAllTargets();
         filter.destroy(); // destroy instance if you want
-        sourceCamera.addTarget(newFilter).addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+        sourceCamera.addTarget(newFilter);
+//        newFilter.addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+//        newFilter.addTarget(rawDataOutput);
+
+        newFilter.addTarget((GPUImageView) findViewById(R.id.gpuimagexview));
+        newFilter.addTarget(rawDataOutput);
         filter = newFilter;
         //sourceCamera.proceed();
     }
@@ -157,4 +182,17 @@ public class CameraSampleActivity extends Activity implements View.OnClickListen
     public void onStopTrackingTouch(SeekBar seekBar) {
     }
 
+    @Override
+    public void onNewFrameAvailable(byte[] bytes, int bytesPerRowInOutput) {
+        Log.e("onNewFrameAvailable","" +bytesPerRowInOutput);
+    }
+    private static final char[] hexCode = "0123456789ABCDEF".toCharArray();
+    public String printHexBinary(byte[] data) {
+        StringBuilder r = new StringBuilder(data.length * 2);
+        for (byte b : data) {
+            r.append(hexCode[(b >> 4) & 0xF]);
+            r.append(hexCode[(b & 0xF)]);
+        }
+        return r.toString();
+    }
 }
